@@ -1,0 +1,27 @@
+<h1>Infrastructure</h1>
+
+<p>
+  <b>Serial</b><br>
+  <%= @infrastructure.serial %>
+</p>
+
+<p>
+  <b>Name</b><br>
+  <%= @infrastructure.name %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @infrastructure.description %>
+</p>
+
+<p>
+  <b>Definition</b><br>
+  <%= text_area_tag 'definition', @infrastructure.definition, :rows => 20, :disabled => true, :class => 'text_area span8'  %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', infrastructures_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_infrastructure_path(@infrastructure), :class => 'btn' %>
+  <%= link_to 'Delete', infrastructure_path(@infrastructure), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

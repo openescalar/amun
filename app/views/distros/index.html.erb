@@ -1,0 +1,28 @@
+<h1>Distros</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Serial</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @distros[@start..@stop].each do |distro| %>
+      <tr>
+        <td><%= distro.id %></td>
+        <td><%= link_to distro.serial, distro_path(distro) %></td>
+        <td><%= distro.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_distro_path(distro), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', distro_path(distro), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_distro_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @distros.size, :page => @page, :objres => "distros" } %>
+

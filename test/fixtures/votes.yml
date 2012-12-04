@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  serial: 1
+  infraescala_id: 1
+
+two:
+  serial: 1
+  infraescala_id: 1

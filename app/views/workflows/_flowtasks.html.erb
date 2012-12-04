@@ -1,0 +1,8 @@
+<% if task.nil? %>
+<div class = "field" >
+</div>
+<% else %>
+<% task.each do |t| %>
+<p><span id="removetask" class="btn btn-mini btn-danger" data-rtask="<%= t.id %>" data-wid="<%= workflow.id %>">Remove</span> <span><%= t.role.name + "::" + t.name %></span></p>
+<% end %>
+<% end %>

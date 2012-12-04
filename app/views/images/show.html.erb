@@ -1,0 +1,22 @@
+<h1>Image</h1>
+
+<p>
+  <b>Serial</b><br>
+  <%= @image.serial %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @image.description %>
+</p>
+
+<p>
+  <b>Arch</b><br>
+  <%= @image.arch %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', images_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_image_path(@image), :class => 'btn' %>
+  <%= link_to 'Delete', image_path(@image), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

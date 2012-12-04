@@ -1,0 +1,196 @@
+<script type="text/javascript">
+$(function() {  
+  var chart1 = new Highcharts.StockChart({  
+    chart: {  
+      renderTo: 'servergraphcontainer1',
+      defaultSeriesType: 'area' 
+    },  
+    legend: {  
+      enabled: true,  
+      align: 'right',  
+      backgroundColor: '#FCFFC5',  
+      borderColor: 'black',  
+      borderWidth: 2,  
+      layout: 'vertical',  
+      verticalAlign: 'top',  
+      y: 100,  
+      shadow: true  
+    },  
+    rangeSelector: {  
+      selected: 1,
+      buttons: [{
+	type: 'minute',
+	count: 1,
+	text: '1m'
+        }, {
+	type: 'minute',
+	count: 5,
+	text: '5m'
+        }, {
+	type: 'minute',
+	count: 30,
+	text: '30m'
+        }, {
+	type: 'hour',
+        count: 1,
+	text: '1h'
+        }, {
+	type: 'all',
+	text: 'All'
+        }]  
+    },  
+    series: [{  
+      name: 'Load',  
+      data: loadhour
+    },{
+      name: 'Memory',
+      data: memoryhour
+    },{
+      name: 'CPU',
+      data: cpuhour
+    }]  
+  }); 
+
+  var chart2 = new Highcharts.StockChart({  
+    chart: {  
+      renderTo: 'servergraphcontainer2',
+      defaultSeriesType: 'area' 
+    },  
+    legend: {  
+      enabled: true,  
+      align: 'right',  
+      backgroundColor: '#FCFFC5',  
+      borderColor: 'black',  
+      borderWidth: 2,  
+      layout: 'vertical',  
+      verticalAlign: 'top',  
+      y: 100,  
+      shadow: true  
+    },  
+    rangeSelector: {  
+      selected: 1,
+      buttons: [{
+	type: 'day',
+	count: 1,
+	text: '1d'
+        }, {
+	type: 'week',
+	count: 1,
+	text: '1w'
+        }, {
+	type: 'month',
+	count: 1,
+	text: '1M'
+        }, {
+	type: 'all',
+	text: 'All'
+        }]  
+    },  
+    series: [{  
+      name: 'Load',  
+      data: loadmonth
+    },{
+      name: 'Memory',
+      data: memorymonth
+    },{
+      name: 'CPU',
+      data: cpumonth
+    }]  
+  });  
+
+  var chart3 = new Highcharts.StockChart({  
+    chart: {  
+      renderTo: 'servergraphcontainer3',
+      defaultSeriesType: 'area' 
+    },  
+    legend: {  
+      enabled: true,  
+      align: 'right',  
+      backgroundColor: '#FCFFC5',  
+      borderColor: 'black',  
+      borderWidth: 2,  
+      layout: 'vertical',  
+      verticalAlign: 'top',  
+      y: 100,  
+      shadow: true  
+    },  
+    rangeSelector: {  
+      selected: 1,
+      buttons: [{
+	type: 'month',
+	count: 1,
+	text: '1M'
+        }, {
+	type: 'month',
+	count: 3,
+	text: '3M'
+        }, {
+	type: 'ytd',
+	count: 1,
+	text: '1y'
+        }, {
+	type: 'all',
+	text: 'All'
+        }]  
+    },  
+    series: [{  
+      name: 'Load',  
+      data: loadyear
+    },{
+      name: 'Memory',
+      data: memoryyear
+    },{
+      name: 'CPU',
+      data: cpuyear
+    }]  
+  });  
+
+  serverofferchart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'serverofferchart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Server by Offer'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+
+});
+</script>

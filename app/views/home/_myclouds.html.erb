@@ -1,0 +1,20 @@
+<div class="accordion" id="accordionclouds">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionclouds" href="#collapseclouds">
+        Clouds
+      </a>
+    </div>
+    <div id="collapseclouds" class="accordion-body collapse in">
+      <div class="accordion-inner">
+<% @oeaccount.zones.each do |z| %>
+ <%= z.name.capitalize %> <br>
+ Servers <%= z.servers.size %>
+ Firewalls <%= z.firewalls.size %>
+ Volumes <%= z.volumes.size %>
+ LoadBalancers <%= z.loadbalancers.size %>
+<% end %> </br>
+      </div>
+    </div>
+  </div>
+</div>

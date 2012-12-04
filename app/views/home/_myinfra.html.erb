@@ -1,0 +1,22 @@
+<div class="accordion" id="accordioninfra">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordioninfra" href="#collapseinfra">
+        Infrastructures
+      </a>
+    </div>
+    <div id="collapseinfra" class="accordion-body collapse in">
+      <div class="accordion-inner">
+<% @oeaccount.infrastructures.each do |i| %>
+<%= link_to i.name.capitalize, infrastructure_path(i)  %></br>
+<b>Servers:</b> <%= i.servers.size %>
+<b>Volumes:</b> <%= i.volumes.size %>
+<b>Firewalls:</b> <%= i.firewalls.size %>
+<b>Key pairs:</b> <%= i.keypairs.size %>
+<b>Escalas:</b> <%= i.infraescalas.size %>
+<% end %>
+</br>
+      </div>
+    </div>
+  </div>
+</div>

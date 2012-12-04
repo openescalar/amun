@@ -1,0 +1,72 @@
+<script type="text/javascript">
+$(function() {  
+  $.getJSON("/zones/serverbyoffer", function(data) {
+   var serverofferchart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'serverofferchart',
+                plotBackgroundColor: "transparent",
+                plotBorderWidth: null,
+                plotShadow: false,
+		height: 200
+            },
+            title: {
+                text: 'Server by Offer'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false,
+                    },
+		    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Offer',
+                data: data 
+            }]
+        });
+     });
+  $.getJSON("/zones/serverbyimage", function(data) {
+  var serverstat2 = new Highcharts.Chart({
+            chart: {
+                renderTo: 'serverstat2',
+                plotBackgroundColor: "transparent",
+                plotBorderWidth: null,
+                plotShadow: false,
+                height: 200
+            },
+            title: {
+                text: 'Server by Image'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Image',
+                data: data
+            }]
+        });
+     });
+
+
+});
+</script>

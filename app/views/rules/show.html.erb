@@ -1,0 +1,22 @@
+<h1>Rule</h1>
+
+<p>
+  <b>Protocol</b><br>
+  <%= @rule.protocol %>
+</p>
+
+<p>
+  <b>Port</b><br>
+  <%= @rule.port %>
+</p>
+
+<p>
+  <b>Source</b><br>
+  <%= @rule.source %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', rules_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_rule_path(@rule), :class => 'btn' %>
+  <%= link_to 'Delete', rule_path(@rule), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

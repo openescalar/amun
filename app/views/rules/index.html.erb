@@ -1,0 +1,29 @@
+<h1>Rules</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Protocol</th>
+      <th>From Port</th>
+      <th>To Port</th>
+      <th>Source</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rules[@start..@stop].each do |rule| %>
+      <tr>
+        <td><%= link_to rule.protocol, rule_path(rule) %></td>
+        <td><%= rule.fromport %></td>
+        <td><%= rule.toport %></td>
+        <td><%= rule.source %></td>
+        <td>
+          <%= link_to 'Destroy', rule_path(rule), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_rule_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @rules.size, :page => @page, :objres => "rules" } %>
+

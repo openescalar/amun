@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  otype: MyString
+  ntype: MyString
+  status: MyString
+  description: MyText
+  account: MyString
+  user: MyString
+  ident: MyString
+
+two:
+  otype: MyString
+  ntype: MyString
+  status: MyString
+  description: MyText
+  account: MyString
+  user: MyString
+  ident: MyString

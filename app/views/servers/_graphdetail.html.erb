@@ -1,0 +1,36 @@
+        <div class="row">
+          <div id="servergraphcontainer" class="span5">
+          </div>
+        </div>
+<% 
+t1 = %w[ load memory cpu-0 ]
+t2 = %w[ 5min 30min hour day week month year ]
+
+t1.each do |t3| %>
+
+        <div class="row">
+          <div id="refreshable<%= t3 %>" class="span5">
+            <%= image_tag("http://monitoring/#{@server.serial}-#{t3}-5min.png", :id => "refreshable#{t3}", :data => { :isrc => "http://monitoring/#{@server.serial}-#{t3}-5min.png" } ) %>
+          </div>
+          <div class="span3">
+            <a href="#" class="btn btn-medium btn-info" rel="popover" data-title="<%= t3 %> Graph" data-placement="bottom" data-content='
+            <div id="myCarousel" class="carousel slide" data-interval="3000">
+              <div class="carousel-inner">
+<% t2.each do |t4| %>
+              <% if t4 == "5min" %>
+                <div class="active item"><b><%= t4 %></b><%= image_tag("http://monitoring/#{@server.serial}-#{t3}-#{t4}.png", :id => "graph", :data => { :gtype => "#{t3}", :isrc => "http://monitoring/#{@server.serial}-#{t3}-#{t4}.png" } ) %></div>
+              <% else %>
+                <div class="item"><b><%= t4 %></b><%= image_tag("http://monitoring/#{@server.serial}-#{t3}-#{t4}.png", :id => "graph", :data => { :gtype => "#{t3}", :isrc => "http://monitoring/#{@server.serial}-#{t3}-#{t4}.png" } ) %></div>
+              <% end %>
+<% end %>              
+              </div>
+              <a href="#myCarousel" data-slide="prev">Prev</a>
+              <a href="#myCarousel" data-slide="next">Next</a>
+            </div>
+            ' data-html="true">Click to show more graphs</a>
+          </div>
+        </div>
+        <br>
+<% end %>
+
+

@@ -1,0 +1,7 @@
+<h1>Roles</h1>
+
+<%= render 'roles/mainindex' %> 
+
+<%= link_to 'New', new_role_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @roles.size, :page => @page, :objres => "roles" } %>
+

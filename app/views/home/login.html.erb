@@ -1,0 +1,41 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+	<a class="brand" href="#">Open Escalar </a>
+	<ul class="nav pull-right">
+	  <li class="dropdown">
+	   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language<b class="caret"></b></a>
+	   <ul class="dropdown-menu">
+		<li><a href="#">English</a></li>
+		<li><a href="#">Espanol</a></li>
+	   </ul>
+         </li>
+        </ul> 
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <br>
+   <br>
+   <br>
+  </div>
+  <div class="row">
+    <div class="span4 offset4 well">
+<%= form_tag do %>
+		<%= label_tag 'Username' %>
+                <%= text_field_tag :username %>
+		<%= label_tag 'Password' %>
+                <%= password_field_tag :password %><br>
+                <%= submit_tag "Login", :class => 'btn btn-info' %> <%= link_to 'Forgot Password', :controller => 'home', :action => 'forgotpassword' %>
+<% end %>
+    </div>
+  </div>
+   <% if not flash[:notice].nil? %>
+   <div class="row">
+         <span class="span4 offset4 alert alert-info"><%= flash[:notice] %></span>
+   </div>
+   <% end %>
+</div>
+

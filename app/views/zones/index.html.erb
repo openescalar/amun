@@ -1,0 +1,24 @@
+<h1>Zones</h1>
+<% 
+ s = "
+<option value=aws-us-east1>Amazon US East(Northern Virgina)</option>
+<option value=aws-us-west1>Amazon US West(Northern California)</option>
+<option value=aws-us-west2>Amazon US West(Oregon)</option>
+<option value=aws-eu1>Amazon EU</option>
+<option value=aws-ap1>Amazon Asia Pacific</option>
+<option value=aws-ap2>Amazon Asia Pacific(Tokyo)</option>
+<option value=aws-sa1>Amazon South America(Sau Paulo)</option>
+<option value=hp-us1>HP Geo 1 Region A</option>
+<option value=rs-us>Rackspace Cloud US</option>
+<option value=rs-uk>Rackspace Cloud UK</option>"
+%>
+<%= form_tag('/zones/enable/') do -%>
+    <%= select_tag "cloud", s.html_safe -%> <%= text_field_tag 'name' -%> <%= submit_tag 'Enable' -%>
+<% end -%>
+
+
+<%= render 'zones/mainindex' %>
+
+<%= link_to 'New', new_zone_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @zones.size, :page => @page, :objres => "zones" } %>
+

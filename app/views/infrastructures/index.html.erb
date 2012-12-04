@@ -1,0 +1,7 @@
+<h1>Infrastructures</h1>
+
+<%= render 'infrastructures/mainindex' %>
+ 
+<%= link_to 'New', new_infrastructure_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @infrastructures.size, :page => @page, :objres => "infrastructures" } %>
+

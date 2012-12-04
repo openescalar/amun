@@ -1,0 +1,51 @@
+#!/opt/ruby/bin/ruby
+require 'mysql2'
+
+a = Hash.new
+puts "Welcome to Amun OpenEscalar"
+puts 
+puts "This guide will help you to configure Amun Cloud Management.... just answer the following questions"
+puts "We'll need a mysql database... please tell me server where your database is located [localhost]:"
+b = gets.chomp
+b == "" ? a["dbserver"] = "localhost" : a["dbserver"] = b
+puts "What will be the database name? [amun]:"
+b = gets.chomp
+b == "" ? a["db"] = "amun" : a["db"] = b
+puts "Setup a user for the database [amun]:"
+b = gets.chomp
+b == "" ? a["dbuser"] = "amun" : a["dbuser"] = b
+puts "Choose a password for the database user [openescalar]:"
+b = gets.chomp
+b == "" ? a["dbpass"] = "openescalar" : a["dbpass"] = b
+puts "Now we'll need a mail server [localhost]:"
+b = gets.chomp
+b == "" ? a["mailserver"] = "localhost" : a["mailserver"] = b
+puts "Give me the email that we'll use to send out notifications [amun@localhost]:"
+b = gets.chomp
+b == "" ? a["mailuser"] = "amun@localhost" : a["mailuser"] = b
+puts "I'll need a password for that user also [openescalar]:"
+b = gets.chomp
+b == "" ? a["mailpass"] = "openescalar" : a["mailpass"] = b
+puts "Let me know check the connectivity to the database...."
+begin
+   Mysql2::Client.new(:host => a["dbserver"], :username => a["dbuser"], :password => a["dbpass"], :database => a["db"])
+rescue
+   puts "I couldn't connect to the db please check your server/credentials and execute amun-setup again"
+end
+puts "Connectivy to the database works.... now I'll prepare the db"
+config = "
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: #{a['db']}
+  pool: 5
+  username: #{a['dbuser']}
+  password: #{a['dbpass']}
+  host: #{a['dbserver']}
+"
+File.open("/opt/openescalar/oe-amun/config/database.yml", 'w') {|f| f.write(config)}
+%x[chown apache.apache /opt/openescalar/oe-amun/config/database.yml]
+%x[cd /opt/openescalar/oe-amun ; /opt/ruby/bin/bundle exec rake db:migrate ; /opt/ruby/bin/bundle exec rake db:seed]
+%x[/etc/init.d/httpd restart]
+puts "Now point your web browser to http://localhost/ and use these credentials user/pass admin/admin"

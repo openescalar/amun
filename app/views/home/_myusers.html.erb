@@ -1,0 +1,16 @@
+<div class="accordion" id="accordionusers">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionusers" href="#collapseusers">
+        Accounts
+      </a>
+    </div>
+    <div id="collapseusers" class="accordion-body collapse in">
+      <div class="accordion-inner">
+<% @oeuser.accounts.each do |u| %>
+<%= u.name %><br>
+<% end %>
+      </div>
+    </div>
+  </div>
+</div>

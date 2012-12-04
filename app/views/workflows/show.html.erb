@@ -1,0 +1,40 @@
+<h1>Workflow</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @workflow.name %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @workflow.description %>
+</p>
+
+<p>
+  <b>Role Tasks</b><br>
+    <div class="control-group">
+      <div class="controls">
+         <% soptions = @oeaccount.roletasks.collect {|p| [p.role.name + "::" + p.name, p.id] if p.role } 
+            soptions.delete_if {|x| x == nil } %>
+         <%= select("role", "task", soptions, { :prompt => 'Select Task to Add' }) %>
+         <%= hidden_field_tag 'id', @workflow.id %>
+      </div>
+    </div>
+</p>
+<p>
+   <div id="workflowtasks">
+	<% if not @roletask.nil? %>
+		<% @roletask.each do |t| %>
+                   <% if not t.role.nil? %>
+	<p><span id="removetask" class="btn btn-mini btn-danger" data-rtask="<%= t.id %>" data-wid="<%= @workflow.id %>">Remove</span> <span><%= t.role.name + "::" + t.name %></span></p>
+                   <% end %>
+		<% end %>
+	<% end %>
+   </div>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', workflows_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_workflow_path(@workflow), :class => 'btn' %>
+  <%= link_to 'Delete', workflow_path(@workflow), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

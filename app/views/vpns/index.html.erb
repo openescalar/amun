@@ -1,0 +1,26 @@
+<h1>Vpns</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Serial</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vpns.each do |vpn| %>
+      <tr>
+        <td><%= vpn.id %></td>
+        <td><%= link_to vpn.serial, vpn_path(vpn) %></td>
+        <td><%= vpn.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_vpn_path(vpn), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', vpn_path(vpn), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_vpn_path, :class => 'btn btn-primary' %>

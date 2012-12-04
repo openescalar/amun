@@ -1,0 +1,34 @@
+<h1>Account</h1>
+
+<p>
+  <b>Key</b><br>
+  <%= @account.key %>
+</p>
+
+<p>
+  <b>Secret</b><br>
+  <%= @account.secret %>
+</p>
+
+<p>
+  <b>Name</b><br>
+  <%= @account.name %>
+</p>
+
+<p>
+  <b>Email</b><br>
+  <%= @account.email %>
+</p>
+
+<p>
+   <b>Users</b></br>
+   <% @account.users.each do |u| %>
+    <%= u.username %><br>
+   <% end %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', accounts_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_account_path(@account), :class => 'btn' %>
+  <%= link_to 'Delete', account_path(@account), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

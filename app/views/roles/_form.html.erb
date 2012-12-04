@@ -1,0 +1,38 @@
+<%= form_for @role, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Role</legend>
+
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :metadata, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :metadata, :class => 'text_area span6', :rows => 5 %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :roletasks, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :roletask_ids,  @oeaccount.roletasks.all.collect {|p| [p.name, p.id] }, {}, :multiple => true  %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', roles_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

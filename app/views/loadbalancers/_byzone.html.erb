@@ -1,0 +1,12 @@
+  <% if azonebyzone.nil? %>
+  <div class = "contro-group" >
+  </div>
+  <% else %>
+    <div class="control-group">
+      <%= f.label :azone_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= select("server", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => 'Select Subzone' }) %>
+      </div>
+    </div>
+  <% end %>
+

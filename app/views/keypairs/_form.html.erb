@@ -1,0 +1,49 @@
+<%= form_for(@keypair) do |f| %>
+  <% if @keypair.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@keypair.errors.count, "error") %> prohibited this keypair from being saved:</h2>
+
+      <ul>
+      <% @keypair.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="control-group">
+      <%= f.label :zone_id, :class => 'control-label' %>
+      <div class="controls">
+        <% if controller.action_name == "new" %>
+          <%= select("keypair", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+        <% else %>
+          <%= select("keypair", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { }, { :disabled => true }) %>
+        <% end %>
+      </div>
+    </div>
+
+   <div class="control-group">
+    <div id="zone_select">
+    </div>
+   </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :public %><br />
+    <%= f.text_field :public %>
+  </div>
+  <div class="field">
+    <%= f.label :private %><br />
+    <%= f.text_field :private %>
+  </div>
+  <div class="field">
+    <%= f.label :fingerprint %><br />
+    <%= f.text_field :fingerprint %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

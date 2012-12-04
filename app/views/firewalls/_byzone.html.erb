@@ -1,0 +1,12 @@
+  <% if azonebyzone.nil? %>
+  <div class = "field" >
+  </div>
+  <% else %>
+    <div class="control-group">
+      <%= label_tag :azone_id, 'Sub Zone', :class => 'control-label' %>
+      <div class="controls">
+        <%= select("firewall", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => 'Select Subzone' }) %>
+      </div>
+    </div>
+  <% end %>
+

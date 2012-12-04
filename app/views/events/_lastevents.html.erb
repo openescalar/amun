@@ -1,0 +1,34 @@
+<div class="accordion" id="accordion-events">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-events" href="#collapseEvents">
+        Events
+      </a>
+    </div>
+    <div id="collapseEvents" class="accordion-body collapse in">
+      <div class="accordion-inner">
+<% 
+eve = Event.where('updated_at > ?', Time.now - 100000000).limit(5)
+eve.each do |e|
+%>
+        <% case e.status
+             when 0 %>
+<div class="alert alert-success">
+             <%= e.description %> - OK
+</div>
+        <%   when 4 %>
+<div class="alert alert-info">
+             <%= e.description %> - PROCESS
+</div>
+        <%   else %>
+<div class="alert alert-error">
+             <%= e.description %> - ERROR
+</div>
+        <% end %>
+<%
+end
+%>
+      </div>
+    </div>
+  </div>
+</div>

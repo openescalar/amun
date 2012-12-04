@@ -1,0 +1,29 @@
+<h1>Deployment</h1>
+
+<p>
+  <b>Serial</b><br>
+  <%= @deployment.serial %>
+</p>
+
+<p>
+  <b>Name</b><br>
+  <%= link_to "Deploy", { :controller => "deployments", :action => "deploy", :id => @deployment.id }, :confirm => "Are you sure?", :class => 'btn btn-mini btn-success', :method => 'post' %> <%= link_to @deployment.name, deployment_path(@deployment) %> <br>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @deployment.description %>
+</p>
+
+<p>
+  <b>Workflows</b><br>
+  <% @deployment.workflows.each do |w| %>
+  <%= link_to "Execute", { :controller => "deployments", :action => "deployworkflow", :id => @deployment.id, :wf => w.id }, :confirm => "Are you sure?", :class => 'btn btn-mini btn-success', :method => 'post' %> <%= w.name %> <br>
+  <% end %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', deployments_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_deployment_path(@deployment), :class => 'btn' %>
+  <%= link_to 'Delete', deployment_path(@deployment), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

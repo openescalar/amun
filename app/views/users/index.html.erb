@@ -1,0 +1,29 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users[@start..@stop].each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.name %></td>
+    <td><%= createlink("view", user) %></td>
+    <td><%= createlink("edit", edit_user_path(user)) %></td>
+    <td><%= createlink("delete", user) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= createlink("add", new_user_path) %> User
+<%= render :partial => 'paginate', :locals => {:total => @users.size, :page => @page, :objres => "users" } %>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head profile="http://www.w3.org/2005/10/profile">
+<link rel="icon" type="image/png" href="/oelogo.png">
+  <title>Open Escalar - Amun Cloud Management</title>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-dropdown" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">
+          OpenEscalar
+        </a>
+        <ul class="nav">
+          <li><a href="/" class="active"><span>Home</span></a></li>
+          <!-- <li><a href="/users/invite"><span>Invite</span></a></li> -->
+          <li><a href="http://blog.openescalar.org"><span>News</span></a></li>
+          <li><a href="/events/"><span>Events</span></a></li>
+          <li><a href="/users/<% if @oeuser.username != "admin" %><%= @oeuser.id %><% end %>" ><span>My Account</span></a></li>
+          <li><a href="/home/logout"><span>Logout</span></a></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if @oeuser.id != 1 %><li><%= select_tag "account_id", options_for_select(@oeuser.accounts.collect {|p| ["Account " + p.name,p.id]}, @oeaccount.id), { :prompt => 'Change Account', :class => "btn btn-small" } %></li><% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Menu
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <% if @oeuser.id == 1 and @oeuser.username == "admin" %>
+                 <li><a href="/administrator/accounts/"><span id="gethelp">Accounts</span></a></li>
+                 <li><a href="/administrator/users/"><span id="gethelp">Users</span></a></li>
+               <% end %>
+               <li><a href="/zones/"><span id="gethelp">Zone</span></a></li>
+               <li><a href="/keypairs/"><span id="gethelp">Key Pairs</span></a></li>
+               <li><a href="/offers/"><span id="gethelp">Offers</span></a></li>
+               <li><a href="/images/"><span id="gethelp">Images</span></a></li>
+               <li><a href="/servers/"><span id="gethelp">Servers</span></a></li>
+               <li><a href="/volumes/"><span id="gethelp">Volumes</span></a></li>
+               <!-- <li><a href="/ips/"><span id="gethelp">IPs</span></a></li> -->
+               <li><a href="/firewalls/"><span id="gethelp">Firewalls</span></a></li>
+               <li><a href="/rules/"><span id="gethelp">Rules</span></a></li>
+               <li><a href="/roles/"><span id="gethelp">Roles</span></a></li>
+               <li><a href="/roletasks/"><span id="gethelp">Role Task</span></a></li>
+               <li><a href="/deployments/"><span id="gethelp">Deployments</span></a></li>
+               <li><a href="/workflows/"><span id="gethelp">Workflows</span></a></li>
+               <li><a href="/infrastructures/"><span id="gethelp">Infrastructures</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+        <%= yield %>
+  </div>
+</body>
+</html>

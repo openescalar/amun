@@ -1,0 +1,44 @@
+<script type="text/javascript">
+$(function() {  
+  $.getJSON("/zones/costbyzone", function(data) {
+  var billchart1 = new Highcharts.Chart({
+            chart: {
+                renderTo: 'billchart1',
+                plotBackgroundColor: "transparent",
+                plotBorderWidth: null,
+                plotShadow: false,
+		height: 400,
+		type: 'bar'
+            },
+            title: {
+                text: 'Hours Used'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y}USD</b>'
+            },
+	    xAxis: {
+		categories: ['Cloud'],
+		title: {
+			text: null
+		}
+	    },
+	    yAxis: {
+		min: 0,
+		title: {
+			text: 'Hours'
+		}
+	    },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: false,
+                    },
+		    showInLegend: true
+                }
+            },
+            series: data
+        });
+     });
+
+});
+</script>

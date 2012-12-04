@@ -1,0 +1,76 @@
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span3 accordion-toggle">
+        <%= events.ident  %>
+      </div>
+      <div class="span1 accordion-toggle">
+        <% case events.status
+             when 0 %>
+             <span class="label label-success">OK</span>
+        <%   when 4 %>
+             <span class="label label-warning">PROCESS</span>
+        <%   else %>
+             <span class="lable label-danger">ERROR</span>
+        <% end %>
+      </div>
+      <div class="span1 accordion-toggle">
+        <%= events.user %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= events.description %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= events.id %>">Output</a>
+        <%= link_to(events.server.serial, server_path(event.server.id), :class => "btn btn-mini btn-info") if not event.server.nil? %>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse<%= events.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+             <textarea class="span8" rows="10" disabled><%= events.output %></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+<% childs.each do |event| %>
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span3 accordion-toggle">
+        <%= event.ident  %>
+      </div>
+      <div class="span1 accordion-toggle">
+        <% case event.status
+             when 0 %>
+             <span class="label label-success">OK</span>
+        <%   when 4 %>
+             <span class="label label-warning">PROCESS</span>
+        <%   else %>
+             <span class="lable label-danger">ERROR</span>
+        <% end %>
+      </div>
+      <div class="span1 accordion-toggle">
+        <%= event.user %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= event.description %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= event.id %>">Output</a>
+        <%= link_to(event.server.serial, server_path(event.server.id), :class => "btn btn-mini btn-info") if not event.server.nil? %>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse<%= event.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+             <textarea class="span8" rows="10" disabled><%= event.output %></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+

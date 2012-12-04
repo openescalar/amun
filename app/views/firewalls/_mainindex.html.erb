@@ -1,0 +1,67 @@
+<div class="row">
+<div class="accordion span12" id="accordionp">
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <b>Serial</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Name</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Description</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Actions</b>
+      </div>
+    </div>
+    </div>
+  </div>
+  <% @firewalls[@start..@stop].each do |firewall| %>
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <%= firewall.serial %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= firewall.name %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= firewall.description %>
+      </div>
+      <div class="span3 accordion-toggle">
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= firewall.id %>">Properties</a>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse1<%= firewall.id %>">Servers</a>
+          <%= link_to 'Destroy', firewall_path(firewall), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse<%= firewall.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+            <% firewall.rules.each do |f| %>
+               <div class="span2"><b>Source:</b> <%= f.source %></div><div class="span2"><b>From Port:</b> <%= f.fromport %> </div><div class="span2"><b>To Port:</b> <%= f.toport %></div><div class="span2"> <b>Protocol:</b> <%= f.protocol %></div></br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse1<%= firewall.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+            <% firewall.servers.each do |f| %>
+               <div class="span2"><b>Serial:</b> <%= link_to f.serial, server_path(f) %></div><br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+

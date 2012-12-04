@@ -1,0 +1,28 @@
+<h1>Loadbalancers</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Serial</th>
+      <th>Description</th>
+      <th>Port</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @loadbalancers[@start..@stop].each do |loadbalancer| %>
+      <tr>
+        <td><%= link_to loadbalancer.serial, loadbalancer_path(loadbalancer) %></td>
+        <td><%= loadbalancer.description %></td>
+        <td><%= loadbalancer.port %></td>
+        <td>
+          <%= link_to 'Edit', edit_loadbalancer_path(loadbalancer), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', loadbalancer_path(loadbalancer), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_loadbalancer_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'paginate', :locals => {:total => @loadbalancers.size, :page => @page, :objres => "loadbalancers" } %>
+

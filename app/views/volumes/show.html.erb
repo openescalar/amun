@@ -1,0 +1,22 @@
+<h1>Volume</h1>
+
+<p>
+  <b>Serial</b><br>
+  <%= @volume.serial %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @volume.description %>
+</p>
+
+<p>
+  <b>Size</b><br>
+  <%= @volume.size %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', volumes_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_volume_path(@volume), :class => 'btn' %>
+  <%= link_to 'Delete', volume_path(@volume), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @user.name %> you have been invited to <%= @sponsor.name %>'s Account</h1>
+    <p>
+      You will be able to provision, control and deploy applications under the <%= @acc.name %>. Feel free to login your username is: <%= @user.username %>.<br/>
+      In order to switch accounts just select <%= @acc.name %> under the right selection box
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

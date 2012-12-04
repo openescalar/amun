@@ -1,0 +1,37 @@
+<h1>Distro</h1>
+
+<p>
+  <b>Serial</b><br>
+  <%= @distro.serial %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @distro.description %>
+</p>
+
+<p>
+  <b>Arch</b><br>
+  <%= @distro.arch %>
+</p>
+
+<p>
+  <b>Url</b><br>
+  <%= @distro.url %>
+</p>
+
+<p>
+  <b>Zone</b><br>
+  <%= @distro.zone_id %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @distro.account_id %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', distros_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_distro_path(@distro), :class => 'btn' %>
+  <%= link_to 'Delete', distro_path(@distro), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

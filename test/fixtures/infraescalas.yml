@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  itype: MyString
+  imodel: MyText
+  iactive: 1
+  imax: 1
+  ivote: 1
+  iescalar: 1
+  infrastructure_id: 1
+
+two:
+  itype: MyString
+  imodel: MyText
+  iactive: 1
+  imax: 1
+  ivote: 1
+  iescalar: 1
+  infrastructure_id: 1

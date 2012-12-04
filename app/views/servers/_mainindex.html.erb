@@ -1,0 +1,77 @@
+<div class="row">
+<div class="accordion span12" id="accordionp">
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <b>Serial</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>FQDN</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>IP Address</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Actions</b>
+      </div>
+    </div>
+    </div>
+  </div>
+  <% @servers[@start..@stop].each do |server| %>
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <%= link_to server.serial, server_path(server) %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= server.fqdn %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= server.ip %>
+      </div>
+      <div class="span3 accordion-toggle">
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= server.id %>">Properties</a>
+          <%= link_to 'Edit', edit_server_path(server), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', server_path(server), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse<%= server.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+            <div class="row"> 
+             <div class="span4">
+             <b>Zone</b> <%= server.zone.name %></br>
+             <b>Availability Zone </b><%= server.azone.name %></br>
+             <b>Firewall</b> <%= server.firewall.serial %></br>
+             </div>
+             <div class="span4">
+              <b>Volume</b>: 
+              <% server.volumes.each do |v| %>
+                 <%= v.serial %> 
+              <% end %>
+              <br>
+              <b>Role:</b>
+              <% server.roles.each do |r| %>
+                 <%= r.name %>
+              <% end %>
+              <br>
+              <b>Deployment</b>: 
+              <% server.deployments.each do |d| %>
+                 <%= d.name %>
+              <% end %>
+              <br>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+

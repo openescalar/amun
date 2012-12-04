@@ -1,0 +1,54 @@
+<div class="row">
+<div class="accordion span12" id="accordionp">
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <b>Name</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Public</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Fingerprint</b>
+      </div>
+      <div class="span2 accordion-toggle">
+        <b>Actions</b>
+      </div>
+    </div>
+    </div>
+  </div>
+  <% @keypairs[@start..@stop].each do |key| %>
+  <div class="accordion-group">
+    <div class="row">
+    <div class="accordion-heading">
+      <div class="span2 accordion-toggle">
+        <%= link_to key.name, keypair_path(key) %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <a href="#" class="btn btn-mini btn-info" rel="popover" data-title="Public Key" data-placement="left" data-content="<%= key.public %>" data-html="true">Show</a>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= key.fingerprint %>
+      </div>
+      <div class="span3 accordion-toggle">
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= key.id %>">Zones</a>
+          <%= link_to 'Edit', edit_keypair_path(key), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', keypair_path(key), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="collapse<%= key.id %>" class="accordion-body collapse out">
+          <div class="accordion-inner">
+                 <b>Zone</b> <%= key.zone.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+

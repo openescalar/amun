@@ -1,0 +1,7 @@
+<h1>Events</h1>
+
+<%= render 'events/mainindex' %>
+
+<br />
+<%= render :partial => 'paginate', :locals => {:total => @events.size, :page => @page, :objres => "events" } %>
+

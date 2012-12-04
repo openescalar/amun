@@ -1,0 +1,33 @@
+<% if page.nil? 
+page = 1 
+ end
+t = (total/10+1)
+%>
+<div class="pagination">
+  <ul>
+     <% if page > 3 %>
+       <li><a href="/<%= objres %>/pages/1">First</a></li>
+       <li><a href="#">...</a></li>
+     <% end %>
+     <% 7.times do |n| %>
+       <% if n < 4 %>
+       <% n1 = page - 4 + n 
+          if n1 > 0 %>
+             <li><a href="/<%= objres %>/pages/<%= page - 4 + n %>"><%= page - 4 + n %></a></li>
+         <% end %>
+       <% elsif n == 4 %>
+         <li class="active"><a href="/<%= objres %>/pages/<%= page %>"><%= page %></a></li>
+       <% elsif n > 4 %>
+         <% n2 = page + n - 4 
+            if n2 <= t %>
+              <li><a href="/<%= objres %>/pages/<%= page + n - 4 %>"><%= page + n - 4%></a></li>
+         <% end %>
+       <% end %>
+     <% end %>
+     
+     <% if page != t %>
+       <li><a href="#">...</a></li>
+       <li><a href="/<%= objres %>/pages/<%= t %>">Last</a></li>
+     <% end %>
+  </ul>
+</div>

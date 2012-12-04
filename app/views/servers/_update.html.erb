@@ -1,0 +1,88 @@
+<%= form_for(@server) do |f| %>
+  <% if @server.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@server.errors.count, "error") %> prohibited this server from being saved:</h2>
+
+      <ul>
+      <% @server.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @server.physical %>
+  <div class="field">
+    <%= f.label :serial %><br />
+    <%= f.text_field :serial %>
+  </div>
+  <div class="field">
+    <%= f.label :fqdn %><br />
+    <%= f.text_field :fqdn %>
+  </div>
+  <div class="field">
+    <%= f.label :physical %><br />
+    <%= f.check_box :physical %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </div>
+  <div class="field">
+    <%= f.label :pip %><br />
+    <%= f.text_field :pip %>
+  </div>
+  <div class="field">
+    <%= f.label :zone %></br>
+    <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+  </div>
+  <div id="zone_select">
+  </div>
+  <div class="field">
+     <%= f.label :role %></br>
+     <%= select("roles", "ids", @oeaccount.roles.collect {|p| [p.name, p.id] }, { :prompt => 'Select Role' }) %>
+  </div>
+  <div class="field">
+     <%= f.label :deployment %></br>
+     <%= select("deployments", "ids", @oeaccount.deployments.collect {|p| [p.name, p.id] }, { :prompt => 'Select Deployment' }) %>
+  </div>
+  <% else %>
+   <div class="field">
+    <%= f.label :serial %><br />
+    <%= f.text_field :serial, :disabled => true  %>
+  </div>
+  <div class="field">
+    <%= f.label :fqdn %><br />
+    <%= f.text_field :fqdn, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :physical %><br />
+    <%= f.check_box :physical, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :pip %><br />
+    <%= f.text_field :pip, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :zone %></br>
+    <%= select("server", "zone_id", Zone.all.collect {|p| [p.name, p.id] }, { :disabled => true }, { :disabled => true } ) %>
+  </div>
+  <div id="zone_select">
+  </div>
+  <div class="field">
+     <%= f.label :role %></br>
+     <%= select("roles", "ids", Role.all.collect {|p| [p.name, p.id] }, { :prompt => 'Select Role' }) %>
+  </div>
+  <div class="field">
+     <%= f.label :deployment %></br>
+     <%= select("deployments", "ids", Deployment.all.collect {|p| [p.name, p.id] }, { :prompt => 'Select Deployment' }) %>
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

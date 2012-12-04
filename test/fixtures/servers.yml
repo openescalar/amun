@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  serial: MyString
+  fqdn: MyString
+  physical: false
+  ip: MyString
+  pip: MyString
+
+two:
+  serial: MyString
+  fqdn: MyString
+  physical: false
+  ip: MyString
+  pip: MyString

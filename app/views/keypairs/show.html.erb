@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @keypair.name %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @keypair.public %>
+</p>
+
+<p>
+  <b>Private:</b>
+  <%= @keypair.private %>
+</p>
+
+<p>
+  <b>Fingerprint:</b>
+  <%= @keypair.fingerprint %>
+</p>
+
+
+<%= link_to 'Edit', edit_keypair_path(@keypair) %> |
+<%= link_to 'Back', keypairs_path %>

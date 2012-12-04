@@ -1,0 +1,65 @@
+<%= form_for @zone, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Zone</legend>
+
+    <%= controller.action_name %>
+
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :entrypoint, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :entrypoint, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :apitype, :class => 'control-label' %>
+      <div class="controls">
+         <% if controller.action_name == "new" %>
+           <%= select("zone", "apitype", options_for_select([["Amazon","AWS"],["Rackspace OpenCloud","RSOPEN"],["HP Cloud","HPOS"],["OpenStack","OSNOVA"],["Eucalyptus","EUCA"],["TestCloud","TEST"]]), { :prompt => 'Select API' } ) %>
+         <% else %>
+           <%= @zone.apitype %>
+         <% end %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label "Key/Username", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :key, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label "Secret/Password", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :secret, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :tenant, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :tenant, :class => 'text_field' %>
+      </div>
+    </div>    
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', zones_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
