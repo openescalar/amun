@@ -5,7 +5,7 @@ class Firewall < ActiveRecord::Base
 	belongs_to :account
         has_many :rules, :dependent => :destroy
         has_many :servers
-        attr_accessible :name, :description
+        attr_accessible :name, :description, :server_ids, :rule_ids, :zone_id, :azone_id
         validates :zone_id, :presence => true
 
 ##### Message format

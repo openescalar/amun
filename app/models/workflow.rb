@@ -3,7 +3,7 @@ class Workflow < ActiveRecord::Base
   belongs_to :account
   has_many :roletask_workflows
   has_many :roletasks, :through => :roletask_workflows
-  attr_accessible :name, :description, :metadata
+  attr_accessible :name, :description, :metadata, :deployment_id
   before_create :genSerial
  
   def flow

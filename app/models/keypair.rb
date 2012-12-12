@@ -5,6 +5,7 @@ class Keypair < ActiveRecord::Base
   belongs_to :azone
   has_many :servers
   #has_and_belongs_to_many :zones
+  attr_accessible :zone_id, :azone_id, :name, :public, :private, :fingerprint
   validates :name, :presence => true, :uniqueness => true
   def send_create
     msg = { :action => "create", :object => "keypair", :objectid => self.id, :accountid => self.account_id }.to_yaml

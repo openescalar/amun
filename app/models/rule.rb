@@ -2,7 +2,7 @@ class Rule < ActiveRecord::Base
         include Oedist
         belongs_to :firewall
 	belongs_to :account
-	attr_accessible :protocol, :fromport, :toport, :source
+	attr_accessible :protocol, :fromport, :toport, :source, :firewall_id
         validates :protocol, :presence => true, :inclusion => { :in => ["TCP","UDP","ICMP","tcp","udp","icmp"] }
         validates :fromport, :presence => true
         validates :toport, :presence => true

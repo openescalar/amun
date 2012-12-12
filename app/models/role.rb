@@ -2,7 +2,7 @@ class Role < ActiveRecord::Base
 	belongs_to :account
         has_and_belongs_to_many :servers
 	has_many :roletasks
-        attr_accessible :name, :description, :metadata
+        attr_accessible :name, :description, :metadata, :roletask_ids
         validates :name, :presence => true, :uniqueness => true
 	#after_create :plusdefaulttasks
         before_create :genSerial

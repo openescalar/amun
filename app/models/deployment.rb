@@ -2,7 +2,7 @@ class Deployment < ActiveRecord::Base
         has_and_belongs_to_many :servers
 	belongs_to :account
 	has_many :workflows, :dependent => :destroy
-        attr_accessible :name, :description, :definition, :metadata
+        attr_accessible :name, :description, :definition, :metadata, :workflow_ids, :server_ids
         validates :name, :presence => true
         before_create :genSerial
 protected
