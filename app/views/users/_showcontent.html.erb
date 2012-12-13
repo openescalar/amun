@@ -21,7 +21,7 @@
       </div>
       <div class="span8 well">
            <% @user.accounts.each do |a| %>
-             <b>Account:</b> <%= a.name %> <b>Key:</b> <%= a.key %> <b>Secret:</b> <a href="#" class="btn btn-medium btn-info" rel="popover" data-title="Secret" data-placement="bottom" data-content='<div><%= a.secret %></div>' data-html="true">Click to show secret</a>
+             <b>Account:</b> <%= a.name %> </br><b>Key:</b> <%= a.key %> </br><b>Secret:</b> <a href="#" class="btn btn-medium btn-info" rel="popover" data-title="Secret" data-placement="bottom" data-content='<div><p><%= a.secret %></p></div>' data-html="true">Click to show secret</a>
            <% end %>
       </div> 
     </div>
