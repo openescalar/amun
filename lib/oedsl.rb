@@ -3,12 +3,14 @@ module Oedsl
   class InfraDSL
     @@acct = 0
     @@iid = 0
-    def initialize(id, iid, &block)
+    def initialize(id, iid)
       @@acct = id
       @@iid = iid
+    end
+    def self.build(&block)
       instance_eval(&block)
     end
-    def zone(name, &block)
+    def self.zone(name,&block)
       ZoneDSL.new(name, @@acct, @@iid, &block)
     end
     def method_missing(m, *args, &block)
@@ -68,8 +70,10 @@ module Oedsl
   class KeypairDSL
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
-      k = Keypair.create(:name => name, :zone_id => zid, :azone_id => szid, :account_id => aid, :public => @pubk, :private => @prik, :infrastructure_id => infraid )
+      k = Keypair.create(:name => name, :zone_id => zid, :azone_id => szid, :public => @pubk, :private => @prik, :infrastructure_id => infraid )
       #k.send_create if k
+      k.account_id = aid
+      k.save
     end
     def publickey(pubk)
       @pubk = pubk
@@ -86,8 +90,10 @@ module Oedsl
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
       @vcount.times do |n|
-        v = Volume.create(:serial => nil, :description => "#{name}-group", :zone_id => zid, :azone_id => szid, :server_id => nil, :account_id => aid, :infrastructure_id => infraid )
+        v = Volume.create(:serial => nil, :description => "#{name}-group", :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
         #v.send_create if v
+	v.account_id = aid
+	v.save
       end
     end
     def size(vsize)
@@ -104,8 +110,10 @@ module Oedsl
   class VolumeDSL
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
-      v = Volume.create(:serial => nil, :description => "#{name}", :size => @vsize, :zone_id => zid, :azone_id => szid, :server_id => nil, :account_id => aid, :infrastructure_id => infraid )
+      v = Volume.create(:serial => nil, :description => "#{name}", :size => @vsize, :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
       #v.send_create
+	v.account_id = aid
+	v.save
     end
     def size(vsize)
        @vsize = vsize
@@ -120,8 +128,9 @@ module Oedsl
       @zid = zid
       @aid = aid
       @infraid = infraid
-      @f = Firewall.create(:name => "firwall-#{name}", :description => "#{name}", :zone_id => zid, :azone_id => szid, :account_id => aid, :infrastructure_id => infraid )
-
+      @f = Firewall.create(:name => "firwall-#{name}", :description => "#{name}", :zone_id => zid, :azone_id => szid, :infrastructure_id => infraid )
+	@f.account_id = aid
+	@f.save
       #f.send_create if f
       instance_eval(&block)
     end
@@ -140,7 +149,9 @@ module Oedsl
       if not @fsport then raise "Error missing source port on firewall definition" end
       if not @fdport then raise "Error missing destination port on firewall definition" end
       if not @fproto then raise "Error missing protocol on firewall definition" end
-      r = Rule.create(:firewall_id => fid, :fromport => @fsport, :toport => @fdport, :source => @fsource, :protocol => @fproto, :infrastructure_id => infraid, :account_id => aid )
+      r = Rule.create(:firewall_id => fid, :fromport => @fsport, :toport => @fdport, :source => @fsource, :protocol => @fproto, :infrastructure_id => infraid )
+      r.account_id = aid
+      r.save
       #r.send_create if r
     end
     def source(src)
@@ -174,12 +185,13 @@ module Oedsl
       end
       @serv[:zone_id] = zid
       @serv[:azone_id] = szid
-      @serv[:account_id] = aid
       @serv[:infrastructure_id] = infraid
       @count.times do |n|
 	@serv[:fqdn] = "#{prefix}-#{n}"
         #s = Server.create(:fqdn => "#{prefix}-#{n}", :zone_id => zid, :azone_id => szid, :offer_id => @soffer, :image_id => @simage, :firewall_id => @sfirewall, :keypair_id => @skeypair, :account_id => aid, :role_id => @srole, :deployment_id => @sdeploy, :infraestructure_id => infraid )
         s = Server.create(@serv )
+        s.account_id = aid
+        s.save
       end
     end
     def image(img)
