@@ -137,7 +137,7 @@ class ZonesController < ApplicationController
   def update
     @zone = Zone.find(params[:id])
     checkaccountobject("zones",@zone)
-
+    params[:zone][:secret] = @zone.secret if params[:zone][:secret] == ""
     respond_to do |format|
       if @zone.update_attributes(params[:zone])
         format.html { redirect_to @zone, notice: 'Zone was successfully updated.' }

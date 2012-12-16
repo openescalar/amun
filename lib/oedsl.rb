@@ -3,11 +3,12 @@ module Oedsl
   class InfraDSL
     @@acct = 0
     @@iid = 0
-    def initialize(id,iid)
+    def initialize(id, iid, &block)
       @@acct = id
       @@iid = iid
+      instance_eval(&block)
     end
-    def self.zone(name, &block)
+    def zone(name, &block)
       ZoneDSL.new(name, @@acct, @@iid, &block)
     end
     def method_missing(m, *args, &block)

@@ -9,7 +9,7 @@ class Volume < ActiveRecord::Base
         validates :zone_id, :presence => true
         validates :azone_id, :presence => true
         validates :name, :presence => true
-	attr_accessible :description, :device, :name, :size, :zone_id, :azone_id, :server_id
+	attr_accessible :infrastructure_id, :description, :device, :name, :size, :zone_id, :azone_id, :server_id
 
   def send_create
     msg = { :action => "create", :object => "volume", :objectid => self.id, :accountid => self.account_id }.to_yaml

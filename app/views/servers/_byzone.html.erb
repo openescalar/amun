@@ -17,13 +17,13 @@
   <div class="control-group">
     <%= label :offer, "Offer", :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "offer_id", offersbyzone.collect{ |p| [p.code, p.id] }, { :prompt => 'Select Offer' }) %>
+      <%= select("server", "offer_id", offersbyzone.collect{ |p| [p.code + " - " + p.description , p.id] }, { :prompt => 'Select Offer' }) %>
     </div>
   </div>
   <div class="control-group">
     <%= label :image, "Image", :class => 'control-label'  %>
     <div class="controls">
-      <%= select("server", "image_id", imagesbyzone.collect{ |p| [p.serial, p.id] }, { :prompt => 'Select Image' }) %>
+      <%= select("server", "image_id", imagesbyzone.collect{ |p| [p.serial + " - " + p.description, p.id] }, { :prompt => 'Select Image' }) %>
     </div>
   </div>
   <div class="control-group">

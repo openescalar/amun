@@ -33,7 +33,8 @@ class Infrastructure < ActiveRecord::Base
     begin
       #self.transaction do 
     
-        instance_eval("Oedsl::InfraDSL.new(#{self.account_id}, #{self.id})\r\n Oedsl::InfraDSL." + self.definition)
+        #instance_eval("Oedsl::InfraDSL.new(#{self.account_id}, #{self.id})\r\n Oedsl::InfraDSL." + self.definition)
+        instance_eval("Oedsl::InfraDSL.new(#{self.account_id}, #{self.id}, {" + self.definition + "}")
         #uuid = SecureRandom.uuid
         #Event.create(:otype => "infrastructure", :ntype => self.serial, :status => "building", :description => self.name, :account => self.account_id, :user => self.account.name , :ident => uuid, :server => nil)
     #  end

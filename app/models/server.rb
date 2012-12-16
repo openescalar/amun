@@ -15,7 +15,7 @@ class Server < ActiveRecord::Base
         has_many :volumes
         has_many :events
         belongs_to :account
-	attr_accessible :fqdn, :zone_id, :azone_id, :keypair_id, :offer_id, :image_id, :firewall_id, :loadbalancer_id, :role_ids, :deployment_ids
+	attr_accessible :infrastructure_id, :infraescala_id, :fqdn, :zone_id, :azone_id, :keypair_id, :offer_id, :image_id, :firewall_id, :loadbalancer_id, :role_ids, :deployment_ids
         validates :fqdn, :presence => true
         validates :zone_id, :presence => true
         validates :offer_id, :presence => true
