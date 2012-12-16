@@ -3,6 +3,7 @@ class CreateServers < ActiveRecord::Migration
     create_table :servers do |t|
       t.string :serial
       t.string :fqdn
+      t.string :name
       t.boolean :physical
       t.string :ip
       t.string :pip

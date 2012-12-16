@@ -70,7 +70,7 @@ module Oedsl
   class KeypairDSL
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
-      k = Keypair.create(:name => name, :zone_id => zid, :azone_id => szid, :public => @pubk, :private => @prik, :infrastructure_id => infraid )
+      k = Keypair.create(:name => "keypair-#{name}", :zone_id => zid, :azone_id => szid, :public => @pubk, :private => @prik, :infrastructure_id => infraid )
       #k.send_create if k
       k.account_id = aid
       k.save
@@ -90,7 +90,7 @@ module Oedsl
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
       @vcount.times do |n|
-        v = Volume.create(:serial => nil, :description => "#{name}-group", :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
+        v = Volume.create(:serial => nil, :name => "volume-#{name}", :description => "#{name}-group", :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
         #v.send_create if v
 	v.account_id = aid
 	v.save
@@ -110,7 +110,7 @@ module Oedsl
   class VolumeDSL
     def initialize(name, zid, szid, aid, infraid, &block)
       instance_eval(&block)
-      v = Volume.create(:serial => nil, :description => "#{name}", :size => @vsize, :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
+      v = Volume.create(:serial => nil, :name => "volume-#{name}", :description => "#{name}", :size => @vsize, :zone_id => zid, :azone_id => szid, :server_id => nil, :infrastructure_id => infraid )
       #v.send_create
 	v.account_id = aid
 	v.save
@@ -164,7 +164,7 @@ module Oedsl
       @fdport = dport
     end
     def protocol(proto)
-      @fproto = proto
+      @fproto = proto.upcase
     end
     def method_missing(m, *args, &block)
       puts "missing on rule ruledsl #{m}"
@@ -187,6 +187,7 @@ module Oedsl
       @serv[:azone_id] = szid
       @serv[:infrastructure_id] = infraid
       @count.times do |n|
+	@serv[:name] = "#{prefix}-#{n}"
 	@serv[:fqdn] = "#{prefix}-#{n}"
         #s = Server.create(:fqdn => "#{prefix}-#{n}", :zone_id => zid, :azone_id => szid, :offer_id => @soffer, :image_id => @simage, :firewall_id => @sfirewall, :keypair_id => @skeypair, :account_id => aid, :role_id => @srole, :deployment_id => @sdeploy, :infraestructure_id => infraid )
         s = Server.create(@serv )
@@ -198,48 +199,48 @@ module Oedsl
       if not Image.where("serial = ? and account_id = ?", img, @aid ).first
          raise "Image doesn't exist"
       end
-      #@simage = Image.where("serial = ? and account_id = ?", img, @aid ).first.id
       @serv[:image_id] = Image.where("serial = ? and account_id = ?", img, @aid ).first.id
     end
     def offer(off)
       if not Offer.where("code = ? and account_id = ?", off, @aid ).first
          raise "Offer doesn't exist"
       end
-      #@soffer = Offer.where("code = ? and account_id = ?", off, @aid ).first.id
       @serv[:offer_id] = Offer.where("code = ? and account_id = ?", off, @aid ).first.id
     end
     def firewall(fw)
-      if not Firewall.where("serial = ? and account_id = ?", fw, @aid ).first 
+      if not Firewall.where("name = ? and account_id = ?", fw, @aid ).first 
         raise "Firewall doesn't exist under this zone/subzone...  please remove the firewall setting or create it"
       end
-      #@sfirewall = Firewall.where("serial = ? and account_id = ?", fw, @aid ).first.id
-      @serv[:firewall_id] = Firewall.where("serial = ? and account_id = ?", fw, @aid ).first.id
+      @serv[:firewall_id] = Firewall.where("name = ? and account_id = ?", fw, @aid ).first.id
     end
     def role(r)
       if not Role.where("serial = ? and account_id = ?", r, @aid ).first
         raise "Role doesn't exist..."
       end
-      #@srole = Role.where("serial = ? and account_id = ?", r, @aid).first.id
       @serv[:role_id] = Role.where("serial = ? and account_id = ?", r, @aid).first.id
     end
     def deployment(d)
       if not Deployment.where("serial = ? and account_id = ?", d, @aid)
         raise "Deployment doesn't exist..."
       end
-      #@sdeploy = Deployment.where("serial = ? and account_id = ?", d, @aid).first
       @serv[:deployment_id] = Deployment.where("serial = ? and account_id = ?", d, @aid).first
     end
     def keypair(k)
       if not Keypair.where("name = ? and account_id = ?", k, @aid).first 
           raise "Keypair doesn't exist"
       end
-      #@skeypair = Keypair.where("name = ? and account_id = ?", k, @aid).first.id
       @serv[:keypair_id] = Keypair.where("name = ? and account_id = ?", k, @aid).first.id
     end
 #    def groupvolume(gname, device)
 #      @gname = gname
 #      @device = device
 #    end
+    def volume(v)
+      if not Volume.where("name = ? and account_id = ?", v, @aid).first
+         raise "Volume doesnt exist"
+      end
+      @serv[:volume_id] = Volume.where("name = ? and account_id = ?", v, @aid).first.id
+    end
     def count(c)
       @count = c
     end
