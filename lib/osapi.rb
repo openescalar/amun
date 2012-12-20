@@ -124,10 +124,13 @@ module Osapi
     data ? getResources("images",data,{:id => "id", :name => "name", :description => "name", :arch => "arch"}, {:arch => "x86_64"}) : false
   end
 
-  def describeinstances(attribute)
-    if not checkRequirements(["thezone"])
+  def describeinstances()
+    if not checkRequirements(["thezone","theserver"])
       return false
     end
+    checkToken(@thezone)
+    data = queryOS(:component => "Nova", :entrypoint => @theserver.azone.endpoint, :method => "get", :path => "#{@thezone.tenant}/servers/#{@theserver.serial}" + , :token => @thezone.token )
+    data ? getResources("servers",data,{:addresses => "addresses" }, nil) : false
   end
 
   #def describekeypairs
@@ -396,6 +399,19 @@ module Osapi
              end
              a << h
            end 
+         when "servers"
+	   resp["server"].each do |d|
+	     h = Hash.new
+	     resor.each do |k,v|
+		case k
+		   when "addresses"
+			t = d["addresses"]["private"][1]["addr"]
+		   else
+		end
+		h[k] = t.to_s if t	
+	     end
+	    a << h
+           end
          else
            resp[path].each do |d|
              h = Hash.new
