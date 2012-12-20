@@ -3,9 +3,9 @@ class UserMailer < ActionMailer::Base
 
   default from: "openescalar@openescalar.org"
 
-  def welcome_email(user, url)
+  def welcome_email(user)
     @user = user
-    @url = url
+    @url = "http://www.openescalar.org"
     mail(:to => user.email, :subject => "Welcome to OpenEscalar")
   end
 
@@ -16,12 +16,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "OpenEscalar Invitation to join an account")
   end
 
-  def reset_password(user, url)
+  def reset_password(user)
     @user = user
     @pass = SecureRandom.hex
     @user.password = @pass
     @user.save
-    @url = url
+    @url = "http://www.openescalar.org/"
     mail(:to => user.email, :subject => "OpenEscalar Password Reset")
   end
 end

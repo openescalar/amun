@@ -6,4 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(:name => "admin", :username => "admin", :password => "admin", :email => "root@localhost.localdomain" )
-Account.create(:name => "test", :email => "openescalar@gmail.com" )
+Account.create(:name => "openescalardemo", :email => "openescalar@gmail.com" )
+a = Account.find(1)
+a.password = "demo"
+a.save
