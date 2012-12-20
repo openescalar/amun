@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(:name => "admin", :username => "admin", :password => "admin", :email => "root@localhost.localdomain" )
 Account.create(:name => "openescalardemo", :email => "openescalar@gmail.com" )
-a = Account.find(1)
+a = User.find_by_username("openescalardemo")
 a.password = "demo"
 a.save
