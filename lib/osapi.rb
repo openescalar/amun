@@ -129,7 +129,7 @@ module Osapi
       return false
     end
     checkToken(@thezone)
-    data = queryOS(:component => "Nova", :entrypoint => @theserver.azone.endpoint, :method => "get", :path => "#{@thezone.tenant}/servers/#{@theserver.serial}" + , :token => @thezone.token )
+    data = queryOS(:component => "Nova", :entrypoint => @theserver.azone.endpoint, :method => "get", :path => "#{@thezone.tenant}/servers/#{@theserver.serial}" , :token => @thezone.token )
     data ? getResources("servers",data,{:addresses => "addresses" }, nil) : false
   end
 
