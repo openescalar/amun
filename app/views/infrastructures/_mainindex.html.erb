@@ -44,7 +44,7 @@
         <div id="collapse<%= infra.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
             <% infra.firewalls.each do |f| %>
-                 <b>Firewall</b> <%= i.serial %>
+                 <b>Firewall</b> <%= f.serial %>
             <% end %>
           </div>
         </div>
