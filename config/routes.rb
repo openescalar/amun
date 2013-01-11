@@ -41,6 +41,7 @@ OpenescalarAmun::Application.routes.draw do
   match 'zones/costbyzone' => 'zones#costbyzone', :via => [:get]
   #match 'zones/:id/import' => 'zones#importResources', :via => [:post]
   #match 'keypairs/:id/import/:zid' => 'keypairs#import', :via => [:post]
+  match 'keypairs/:id/download' => 'keypairs#download', :via => [:get]
   match 'servers/update_zone_select/:id', :controller => 'servers', :action => 'update_zone_select'
   match 'volumes/update_zone_select/:id', :controller => 'volumes', :action => 'update_zone_select'
   match 'images/update_zone_select/:id', :controller => 'images', :action => 'update_zone_select'

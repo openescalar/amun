@@ -13,6 +13,9 @@
         <b>Fingerprint</b>
       </div>
       <div class="span2 accordion-toggle">
+        <b>Private</b>
+      </div>
+      <div class="span2 accordion-toggle">
         <b>Actions</b>
       </div>
     </div>
@@ -30,6 +33,9 @@
       </div>
       <div class="span2 accordion-toggle">
         <%= key.fingerprint %>
+      </div>
+      <div class="span2 accordion-toggle">
+        <%= link_to 'Download', :controller => 'keypairs', :action => 'download', :id => key.id %>
       </div>
       <div class="span3 accordion-toggle">
         <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= key.id %>">Zones</a>

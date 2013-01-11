@@ -15,6 +15,12 @@ class KeypairsController < ApplicationController
     end
   end
 
+  # GET /keypairs/1/download
+  def download
+    @keypair = Keypair.find(params[:id])
+    send_data @keypair.private, :filename => "#{@keypair.name}.pem"
+  end
+
   # GET /keypairs/1
   # GET /keypairs/1.json
   def show
