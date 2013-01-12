@@ -130,7 +130,8 @@ module Osapi
     end
     checkToken(@thezone)
     data = queryOS(:component => "Nova", :entrypoint => @theserver.azone.endpoint, :method => "get", :path => "#{@thezone.tenant}/servers/#{@theserver.serial}" , :token => @thezone.token )
-    data ? getResources("servers",data,{:addresses => "addresses" }, nil) : false
+    ans = getResources("servers",data,{:addresses => "addresses", :status => "status"}, nil)
+    ans ? ans[0][:addresses], ans[0][:status], @theserver.name : false
   end
 
   #def describekeypairs
@@ -400,17 +401,22 @@ module Osapi
              a << h
            end 
          when "servers"
-	   resp["server"].each do |d|
+	   if resp["server"].class == Hash
 	     h = Hash.new
-	     resor.each do |k,v|
-		case k
-		   when "addresses"
-			t = d["addresses"]["private"][1]["addr"]
-		   else
-		end
-		h[k] = t.to_s if t	
-	     end
-	    a << h
+             resp["server"].each do |d|
+               resor.each do |k,v|
+                  if v == d[0].to_s
+                    case k.to_s
+                          when "addresses"
+                             t = d[1]["private"][1]["addr"]
+                          when "status"
+                             t = d[1]
+                    end
+                  end   
+               h[k] = t.to_s if t
+	       end
+             end
+             a << h  if not h.empty?
            end
          else
            resp[path].each do |d|

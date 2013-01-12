@@ -128,7 +128,7 @@ module Oedsl
       @zid = zid
       @aid = aid
       @infraid = infraid
-      @f = Firewall.create(:name => "firwall-#{name}", :description => "#{name}", :zone_id => zid, :azone_id => szid, :infrastructure_id => infraid )
+      @f = Firewall.create(:name => "firewall-#{name}", :description => "#{name}", :zone_id => zid, :azone_id => szid, :infrastructure_id => infraid )
 	@f.account_id = aid
 	@f.save
       #f.send_create if f

@@ -63,9 +63,12 @@ module Oecompiler
    @Rtable[18]="string do B end D"
    @Rtable[19]="firewall string C1"
    @Rtable[20]="escalar string C1"
-   @Rtable[21]="keypair E"
-   @Rtable[22]="publickey string E1"
-   @Rtable[23]="privatekey string E1"
+   #@Rtable[21]="keypair E"
+   @Rtable[21]="keypair B1"
+   #@Rtable[22]="publickey string E1"
+   #@Rtable[23]="privatekey string E1"
+   @Rtable[22]="publickey string C1"
+   @Rtable[23]="privatekey string C1"
    @Rtable[24]="rule do C end C1"
    @Rtable[25]="keypair string E1"
    @Rtable[26]="string do E end D"
@@ -82,8 +85,8 @@ module Oecompiler
    @Ttable[1]= [nil, nil,      1, nil, nil,      nil,    nil,    nil,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,     nil,     nil, nil,     nil,       nil,        nil,  nil] # A
    @Ttable[2]= [nil, nil,    nil, nil,  15,        2,      3,      4,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,     nil,     nil, 21,     nil,       nil,        24,   27] # B
    @Ttable[3]= [nil, nil,      5, nil, nil,      nil,    nil,    nil,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,     nil,     nil, nil,     nil,       nil,        nil,  nil] # B1
-   @Ttable[4]= [nil, nil,    nil, nil, nil,       19,    nil,    nil,      6,     7,     8,    9,    10,    11,    12,  13,     14,     nil,       16,     nil,      20, 28,     23,        24,        24,    29] # C
-   @Ttable[5]= [nil, nil,    nil, nil,  15,       19,    nil,    nil,      6,     7,     8,    9,    10,    11,    12,  13,     14,     nil,       16,     nil,      20, 28,     23,        24,        24,    29] # C1
+   @Ttable[4]= [nil, nil,    nil, nil, nil,       19,    nil,    nil,      6,     7,     8,    9,    10,    11,    12,  13,     14,     nil,       16,     nil,      20, 28,     22,        23,        24,    29] # C
+   @Ttable[5]= [nil, nil,    nil, nil,  15,       19,    nil,    nil,      6,     7,     8,    9,    10,    11,    12,  13,     14,     nil,       16,     nil,      20, 28,     22,        23,        24,    29] # C1
    @Ttable[6]= [nil, nil,    nil, nil,  15,      nil,    nil,    nil,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,      17,     nil, nil,     nil,       nil,        nil,  nil] # D
    @Ttable[7]= [nil, nil,     18, nil, nil,      nil,    nil,    nil,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,     nil,     nil, nil,     nil,       nil,        nil,  nil] # D1
    @Ttable[8]= [nil, nil,     26, nil,  nil,      nil,    nil,    nil,    nil,   nil,   nil,  nil,   nil,   nil,   nil, nil,    nil,     nil,      nil,     nil,     nil, 21,      22,        23,        nil,  nil] # E
