@@ -131,7 +131,11 @@ module Osapi
     checkToken(@thezone)
     data = queryOS(:component => "Nova", :entrypoint => @theserver.azone.endpoint, :method => "get", :path => "#{@thezone.tenant}/servers/#{@theserver.serial}" , :token => @thezone.token )
     ans = getResources("servers",data,{:addresses => "addresses", :status => "status"}, nil)
-    ans ? ans[0][:addresses], ans[0][:status], @theserver.name : false
+    if ans    
+       return ans[0][:addresses], ans[0][:status], @theserver.name
+    else
+       false
+    end
   end
 
   #def describekeypairs
