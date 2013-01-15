@@ -174,22 +174,10 @@ module Awsapi
     getResources('//imagesSet/item',r,{:id => "imageId", :description => "description", :arch => "architecture"})
   end
 
-  def describeinstances()
+  def getserverstatus()
     if not checkRequirements(["thezone","theserver"])
        return false
     end
-    #attributes=""
-    #case attribute
-    #when "publicip"
-    #  attributes="ipAddress"
-    #when "status"
-    #  attributes="instanceState/code"
-    #when "offer"
-    #  attributes="instanceType"
-    #when "fqdn"
-    #  attributes="dnsName"
-    #else
-    #end
     @parameters['Action']="DescribeInstances"
     @parameters['InstanceId.1']=@theserver.serial
     q = createSign(@parameters, @thezone.entrypoint)

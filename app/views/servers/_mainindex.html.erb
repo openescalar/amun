@@ -33,6 +33,7 @@
       </div>
       <div class="span3 accordion-toggle">
           <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= server.id %>">Properties</a>
+          <%= link_to 'Install Client', :controller => "servers", :action => "iclient", :id => server.id, :class => 'btn btn-mini' %>
           <%= link_to 'Edit', edit_server_path(server), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', server_path(server), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
       </div>

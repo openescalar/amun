@@ -221,6 +221,17 @@ module Eucaapi
   #  parseQuery("instancesSet/item/instanceId",r)
   #end
 
+  def getserverstatus()
+    if not checkRequirements(["thezone","theserver"])
+       return false
+    end
+    @parameters['Action']="DescribeInstances"
+    @parameters['InstanceId.1']=@theserver.serial
+    q = createSign(@parameters, @thezone.entrypoint)
+    r = queryCloud(q, @thezone.entrypoint)
+    return parseQuery("reservationSet/item/instancesSet/item/ipAddress",r), parseQuery("reservationSet/item/instancesSet/item/instanceState/code",r), parseQuery("reservationSet/item/instancesSet/item/dnsName",r)
+  end
+
   def describeinstances(attribute)
     if not checkRequirements(["thezone","theserver"])
       return false

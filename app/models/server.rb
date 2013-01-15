@@ -30,6 +30,13 @@ class Server < ActiveRecord::Base
 #        end
 #      	after_create :send_create
 
+  def send_install
+    uuid = SecureRandom.uuid
+    msg = { :action => "installclient", :object => "server", :objectid => self.id, :accountid => self.account_id }.to_yaml
+    sendMsg msg
+    #Event.create(:status => 4, :account_id => @oeaccount.id, :user => @oeuser.name, :ident => uuid, :description => "Creating Server" )
+  end
+
   def send_create
     uuid = SecureRandom.uuid
     msg = { :action => "create", :object => "server", :objectid => self.id, :accountid => self.account_id }.to_yaml

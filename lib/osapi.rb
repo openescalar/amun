@@ -124,7 +124,7 @@ module Osapi
     data ? getResources("images",data,{:id => "id", :name => "name", :description => "name", :arch => "arch"}, {:arch => "x86_64"}) : false
   end
 
-  def describeinstances()
+  def getserverstatus()
     if not checkRequirements(["thezone","theserver"])
       return false
     end

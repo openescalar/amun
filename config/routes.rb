@@ -51,6 +51,7 @@ OpenescalarAmun::Application.routes.draw do
   match 'workflows/addtask', :controller => 'workflows', :action => 'addtask', :via => [:post]
   match 'workflows/deltask', :controller => 'workflows', :action => 'deltask', :via => [:post]
   match 'servers/:id/getlog', :controller => 'servers', :action => 'getlog', :via => [:get]
+  match 'servers/:id/installclient', 'servers#iclient', :via => [:get]
 
   #end Extra form jquery options
 

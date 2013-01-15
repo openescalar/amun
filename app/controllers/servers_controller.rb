@@ -132,4 +132,15 @@ class ServersController < ApplicationController
     render :partial => "log", :locals => { :logios => logios }
   end
 
+  # GET /servers/1/installclient
+  def iclient
+    @server = Server.find(params[:id])
+    checkaccountobject("servers",@server)
+    @server.send_install
+    respond_to |format|
+      format.html { redirect_to servers_url }
+      format.json { head :ok }
+    end
+  end
+
 end
