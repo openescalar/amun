@@ -137,7 +137,7 @@ class ServersController < ApplicationController
     @server = Server.find(params[:id])
     checkaccountobject("servers",@server)
     @server.send_install
-    respond_to |format|
+    respond_to do |format|
       format.html { redirect_to servers_url }
       format.json { head :ok }
     end
