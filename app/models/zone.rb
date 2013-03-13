@@ -11,7 +11,7 @@ class Zone < ActiveRecord::Base
         has_many :keypairs
         #has_and_belongs_to_many :keypairs
         belongs_to :account
-	attr_accessible :name, :description, :entrypoint, :apitype, :key, :secret, :tenant
+	attr_accessible :name, :description, :entrypoint, :apitype, :key, :secret, :tenant, :account_id
 	validates :key, :presence => true
 	validates :secret, :presence => true
         validates :name, :presence => true, :uniqueness => true
