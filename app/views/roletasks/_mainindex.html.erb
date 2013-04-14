@@ -41,7 +41,7 @@
       <div class="span12">
         <div id="collapse<%= roletask.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
-                 <b>Role</b> <%= link_to roletask.role.name, role_path(roletask.role) %>
+                 <b>Role</b> <% if roletask.role %><%= link_to roletask.role.name, role_path(roletask.role) %><% end -%>
           </div>
         </div>
       </div>
