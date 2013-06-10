@@ -5,6 +5,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
+    @pass = SecureRandom.hex
     @url = "http://www.openescalar.org"
     mail(:to => user.email, :subject => "Welcome to OpenEscalar")
   end

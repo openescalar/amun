@@ -37,7 +37,7 @@ class HomeController < ApplicationController
       if user
         if user.email == params[:email]
           begin 
-            UserMailer.reset_password(user,"#{request.scheme}://#{request.host_with_port}/").deliver
+            UserMailer.reset_password(user).deliver
           rescue => e
             logger.debug e.inspect.to_s
           end
@@ -65,9 +65,6 @@ class HomeController < ApplicationController
       user = User.find_by_username([:name].to_s)
       if not account and not user
         Account.create(:name => params[:name].to_s, :email => params[:email].to_s)
-        a = User.find_by_username(params[:name].to_s)
-        a.password = (0...8).map{(65+rand(26)).chr}.join
-        a.save
         flash[:notice] = 'Account created'
         redirect_to(:action => "login")
       else
@@ -75,7 +72,7 @@ class HomeController < ApplicationController
         redirect_to(:action => "signup")
       end
     else
-      render :layout => 'singup'
+      render :layout => 'login'
     end
   end
   

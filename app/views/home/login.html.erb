@@ -28,7 +28,8 @@
                 <%= text_field_tag :username %>
 		<%= label_tag 'Password' %>
                 <%= password_field_tag :password %><br>
-                <%= submit_tag "Login", :class => 'btn btn-info' %> <%= link_to 'Forgot Password', :controller => 'home', :action => 'forgotpassword' %>
+                <%= submit_tag "Login", :class => 'btn btn-info' %> <%= link_to 'Forgot Password', :controller => 'home', :action => 'forgotpassword' %><br>
+		<%= link_to 'Sign Up', :controller => 'home', :action => 'signup' %><br>
 <% end %>
     </div>
   </div>

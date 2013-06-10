@@ -6,8 +6,9 @@
   <body>
     <h1>Welcome to openescalar.com, <%= @user.name %></h1>
     <p>
-      You have successfully signed up to openescalar.com,
-      your username is: <%= @user.username %>.<br/>
+      You have successfully signed up to openescalar.com<br>
+      Username is: <%= @user.username %>.<br/>
+      Password is: <%= @pass %>.<br/>
     </p>
     <p>
       To login to the site, just follow this link: <%= link_to "Openescalar", @url %>.
