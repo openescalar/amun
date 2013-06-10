@@ -7,7 +7,9 @@
     </div>
     <div id="collapsebill" class="accordion-body collapse in">
       <div id="billchart1" class="accordion-inner">
+	<% if @oeaccount.zones.size > 0 -%>
         <%= render 'home/billchart.js' %>
+	<% end -%>
       </div>
     </div>
   </div>

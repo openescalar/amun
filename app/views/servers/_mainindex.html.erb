@@ -46,7 +46,7 @@
             <div class="row"> 
              <div class="span4">
              <b>Zone</b> <%= server.zone.name %></br>
-             <b>Availability Zone </b><%= server.azone.name %></br>
+             <b>Availability Zone </b><% if server.azone %><%= server.azone.name %><% end -%></br>
              <b>Firewall</b> <%= server.firewall.serial %></br>
              </div>
              <div class="span4">
