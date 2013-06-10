@@ -52,11 +52,31 @@ class HomeController < ApplicationController
     else
       if session[:user_id]
         redirect_to(:action => 'index')
-	return
+	      return
       else
         render :layout => 'login'
       end
     end
   end
 
+  def signup
+    if request.post?
+      account = Account.find_by_name(params[:name].to_s)
+      user = User.find_by_username([:name].to_s)
+      if not account and not user
+        Account.create(:name => params[:name].to_s, :email => params[:email].to_s)
+        a = User.find_by_username(params[:name].to_s)
+        a.password = (0...8).map{(65+rand(26)).chr}.join
+        a.save
+        flash[:notice] = 'Account created'
+        redirect_to(:action => "login")
+      else
+        flash[:notice] = "Username is already in use"
+        redirect_to(:action => "signup")
+      end
+    else
+      render :layout => 'singup'
+    end
+  end
+  
 end

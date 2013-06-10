@@ -30,6 +30,8 @@ OpenescalarAmun::Application.routes.draw do
   post "home/forgotpassword"
   post "home/login"
   get "home/logout"
+  get "home/signup"
+  post "home/signup"
 
   #end Home and Login
 
@@ -97,20 +99,6 @@ OpenescalarAmun::Application.routes.draw do
   resources :keypairs
   resources :workflows
   resources :events, :only => [:index]
-
-  # Resources for future implementation
-  #resources :distros
-  #resources :loadbalancers
-  #resources :vpns
-
-  #End Resources
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 
   root :to => 'home#index'
 
