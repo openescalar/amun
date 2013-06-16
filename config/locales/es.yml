@@ -1,5 +1,39 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 es:
-  hello: "Hello world"
+  actions: acciones
+  new: nueva
+  edit: editar
+  cancel: cancelar
+  create: crear
+  back: atras
+  update: actualizar
+  destroy: destruir
+  home: inicio
+  news: noticias
+  events: eventos
+  my_account: mi cuenta
+  logout: salir
+  name: nombre
+  change_account: cambiar cuenta
+  username: usuario
+  password: contrasena
+  forgot_password: olvide contrasena
+  sign_up: registrarse
+  email: correo electronico
+  account: cuenta
+  reset_password: recuperar password
+  zones: zonas
+  images: imagenes
+  offers: especificaciones
+  servers: servidores
+  firewalls: cortafuegos
+  rules: reglas
+  roles: roles
+  workflows: flujos
+  deployments: distribuciones
+  infrastructures: infraestructuras
+  my_dashboard: Mi Tablero
+  clouds: nubes
+  billing: costos
+  stats: Estatisticas
+
+

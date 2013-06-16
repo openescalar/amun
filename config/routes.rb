@@ -1,4 +1,6 @@
 OpenescalarAmun::Application.routes.draw do
+
+scope "(:locale)", :locale => /en|es/ do
  
   #pagination
 
@@ -99,6 +101,8 @@ OpenescalarAmun::Application.routes.draw do
   resources :keypairs
   resources :workflows
   resources :events, :only => [:index]
+
+end
 
   root :to => 'home#index'
 
