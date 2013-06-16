@@ -1,22 +1,22 @@
-<h1>Firewall</h1>
+<h1><%=t :firewall %></h1>
 
 <p>
-  <b>Serial</b><br>
+  <b><%=t :serial %></b><br>
   <%= @firewall.serial %>
 </p>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @firewall.name %>
 </p>
 
 <p>
-  <b>Description</b><br>
+  <b><%=t :description %></b><br>
   <%= @firewall.description %>
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', firewalls_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_firewall_path(@firewall), :class => 'btn' %>
-  <%= link_to 'Delete', firewall_path(@firewall), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), firewalls_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_firewall_path(@firewall), :class => 'btn' %>
+  <%= link_to t(:delete), firewall_path(@firewall), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

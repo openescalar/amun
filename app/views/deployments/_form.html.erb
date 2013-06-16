@@ -3,35 +3,35 @@
     <legend><%= controller.action_name.capitalize %> Deployment</legend>
 
     <div class="control-group">
-      <%= f.label :serial, :class => 'control-label' %>
+      <%= f.label t(:serial), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :serial, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %>
+      <%= f.label t(:name), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :description, :class => 'control-label' %>
+      <%= f.label t(:description), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :description, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :metadata, :class => 'control-label' %>
+      <%= f.label t(:metadata), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :metadata, :class => 'text_area span6', :rows => 6 %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :workflows, :class => 'control-label' %>
+      <%= f.label t(:workflows), :class => 'control-label' %>
       <div class="controls">
         <%= f.select :workflow_ids,  @oeaccount.workflows.all.collect {|p| [p.name, p.id] }, {}, :multiple => true  %>
       </div>
@@ -39,7 +39,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', deployments_path, :class => 'btn' %>
+      <%= link_to t(:cancel), deployments_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

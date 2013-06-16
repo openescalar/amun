@@ -20,7 +20,7 @@
         <%= events.description %>
       </div>
       <div class="span2 accordion-toggle">
-        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= events.id %>">Output</a>
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= events.id %>"><%=t :output %></a>
         <%= link_to(events.server.serial, server_path(event.server.id), :class => "btn btn-mini btn-info") if not event.server.nil? %>
       </div>
     </div>
@@ -57,7 +57,7 @@
         <%= event.description %>
       </div>
       <div class="span2 accordion-toggle">
-        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= event.id %>">Output</a>
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= event.id %>"><%=t :output %></a>
         <%= link_to(event.server.serial, server_path(event.server.id), :class => "btn btn-mini btn-info") if not event.server.nil? %>
       </div>
     </div>

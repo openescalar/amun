@@ -1,34 +1,34 @@
-<h1>Account</h1>
+<h1><%=t :account %></h1>
 
 <p>
-  <b>Key</b><br>
+  <b><%=t :key %></b><br>
   <%= @account.key %>
 </p>
 
 <p>
-  <b>Secret</b><br>
+  <b><%=t :secret %></b><br>
   <%= @account.secret %>
 </p>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @account.name %>
 </p>
 
 <p>
-  <b>Email</b><br>
+  <b><%=t :email %></b><br>
   <%= @account.email %>
 </p>
 
 <p>
-   <b>Users</b></br>
+   <b><%=t :users %></b></br>
    <% @account.users.each do |u| %>
     <%= u.username %><br>
    <% end %>
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', accounts_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_account_path(@account), :class => 'btn' %>
-  <%= link_to 'Delete', account_path(@account), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), accounts_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_account_path(@account), :class => 'btn' %>
+  <%= link_to t(:delete), account_path(@account), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

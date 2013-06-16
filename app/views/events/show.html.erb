@@ -4,22 +4,22 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span3 accordion-toggle">
-        <b>Event</b>
+        <b><%=t :event %></b>
       </div>
       <div class="span1 accordion-toggle">
-        <b>Status</b>
+        <b><%=t :status %></b>
       </div>
       <div class="span1 accordion-toggle">
-        <b>User</b>
+        <b><%=t :user %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Description</b>
+        <b><%=t :description %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Server</b>
+        <b><%=t :server %></b>
       </div>
       <div class="span2 accordion-toggle">
-       <span id="autorefreshevent" data-uuid="<%= @e %>" class="btn btn-info">Auto Refresh</span>
+       <span id="autorefreshevent" data-uuid="<%= @e %>" class="btn btn-info"><%=t :autorefresh %></span>
       </div>
     </div>
     </div>
@@ -48,7 +48,7 @@
         <%= event.description %>
       </div>
       <div class="span2 accordion-toggle">
-        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= event.id %>">Output</a>
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= event.id %>"><%=t :output %></a>
         <%= link_to(event.server.serial, server_path(event.server.id), :class => "btn btn-mini btn-info") if not event.server.nil? %>
       </div>
     </div>
@@ -67,4 +67,4 @@
 </div>
 </div>
 
-<%= link_to 'Back', events_path %>
+<%= link_to t(:back), events_path %>

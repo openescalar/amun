@@ -3,35 +3,35 @@
     <legend><%= controller.action_name.capitalize %> Account</legend>
 
     <div class="control-group">
-      <%= f.label :key, :class => 'control-label' %>
+      <%= f.label t(:key), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :key, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :secret, :class => 'control-label' %>
+      <%= f.label t(:secret), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :secret, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %>
+      <%= f.label t(:name), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :email, :class => 'control-label' %>
+      <%= f.label t(:email), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :email, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :users, :class => 'control-label' %>
+      <%= f.label t(:users), :class => 'control-label' %>
       <div class="controls">
         <%= f.select :user_ids,  User.all.collect {|p| [p.name, p.id] }, {}, :multiple => true  %>
       </div>
@@ -39,7 +39,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', accounts_path, :class => 'btn' %>
+      <%= link_to t(:cancel), accounts_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

@@ -1,6 +1,6 @@
-<h1>Firewalls</h1>
+<h1><%=t :firewalls %></h1>
 
 <%= render 'firewalls/mainindex' %>
 
-<%= link_to 'New', new_firewall_path, :class => 'btn btn-primary' %>  
+<%= link_to t(:new), new_firewall_path, :class => 'btn btn-primary' %>  
 <%= render :partial => 'paginate', :locals => {:total => @firewalls.size, :page => @page, :objres => "firewalls" } %>

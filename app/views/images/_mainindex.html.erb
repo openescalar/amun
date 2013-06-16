@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Serial</b>
+        <b><%=t :serial %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Description</b>
+        <b><%=t :description %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Arch</b>
+        <b><%=t :arch %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b><%=t :actions %></b>
       </div>
     </div>
     </div>
@@ -32,9 +32,9 @@
         <%= image.arch %>
       </div>
       <div class="span3 accordion-toggle">
-        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= image.id %>">Zone</a>
-          <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', image_path(image), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= image.id %>"><%=t :zone %></a>
+          <%= link_to t(:edit), edit_image_path(image), :class => 'btn btn-mini' %>
+          <%= link_to t(:destroy), image_path(image), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -42,7 +42,7 @@
       <div class="span12">
         <div id="collapse<%= image.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
-                 <b>Zone</b> <%= image.zone.name %>
+                 <b><%=t :zone %></b> <%= image.zone.name %>
           </div>
         </div>
       </div>

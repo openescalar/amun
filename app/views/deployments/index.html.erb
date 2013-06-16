@@ -2,6 +2,6 @@
 
 <%= render 'deployments/mainindex' %>
 
-<%= link_to 'New', new_deployment_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_deployment_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @deployments.size, :page => @page, :objres => "deployments" } %>
 
