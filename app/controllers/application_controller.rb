@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   require 'securerandom'
   before_filter :authorize, :except => [ :login, :logout, :forgotpassword, :signup, :gettask, :updatetask ]
+  before_filter :setlocale
   protect_from_forgery
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def addtoaccount(thing, value)
         eval "@oeaccount.#{thing} << value"

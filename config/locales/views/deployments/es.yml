@@ -1,0 +1,11 @@
+es:
+  deployments: distribuciones
+  deployment: distribucion
+  serial: numero de serie
+  name: nombre
+  description: descripcion
+  properties: propiedades
+  workflow: flujo
+  task: tarea
+  workflows: flujos
+

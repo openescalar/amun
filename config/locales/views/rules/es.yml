@@ -1,0 +1,11 @@
+es:
+  rules: reglas
+  rule: regla
+  protocol: protocolo
+  from_port: puerto origen
+  to_port: puerto destino
+  source: origen
+  select_proto: selecciona protocolo
+  firewall: cortafuegos
+  select_firewall: selecciona cortafuegos
+

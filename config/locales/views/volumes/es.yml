@@ -1,0 +1,9 @@
+es:
+  serial: numero de serie
+  status: estado
+  size: tamano
+  volumes: discos
+  volume: disco
+  name: nombre
+  description: descripcion
+  zone: zona

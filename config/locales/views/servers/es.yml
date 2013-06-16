@@ -1,0 +1,15 @@
+es:
+  serial: numero de serie
+  fqdn: nombre de dominio
+  ip_address: direccion ip
+  servers: servidores
+  server: servidor
+  roles: roles
+  deployments: applicacion
+  key_pair: llave
+  available_zone: subzona
+  offer: tamanio
+  image: imagen
+  firewall: cortafuegos
+  loadbalacner: balanceador de carga
+  

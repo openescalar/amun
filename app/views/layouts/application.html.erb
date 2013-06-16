@@ -20,15 +20,15 @@
           OpenEscalar
         </a>
         <ul class="nav">
-          <li><a href="/" class="active"><span>Home</span></a></li>
+          <li><a href="/" class="active"><span><%=t :home %></span></a></li>
           <!-- <li><a href="/users/invite"><span>Invite</span></a></li> -->
-          <li><a href="http://blog.openescalar.org"><span>News</span></a></li>
-          <li><a href="/events/"><span>Events</span></a></li>
-          <li><a href="/users/<% if @oeuser.username != "admin" %><%= @oeuser.id %><% end %>" ><span>My Account</span></a></li>
-          <li><a href="/home/logout"><span>Logout</span></a></li>
+          <li><a href="http://blog.openescalar.org"><span><%=t :new %></span></a></li>
+          <li><a href="/events/"><span><%=t :events %></span></a></li>
+          <li><a href="/users/<% if @oeuser.username != "admin" %><%= @oeuser.id %><% end %>" ><span><%=t :my_account %></span></a></li>
+          <li><a href="/home/logout"><span><%=t :logout %></span></a></li>
         </ul>
         <ul class="nav pull-right">
-          <% if @oeuser.id != 1 %><li><%= select_tag "account_id", options_for_select(@oeuser.accounts.collect {|p| ["Account " + p.name,p.id]}, @oeaccount.id), { :prompt => 'Change Account', :class => "btn btn-small" } %></li><% end %>
+          <% if @oeuser.id != 1 %><li><%= select_tag "account_id", options_for_select(@oeuser.accounts.collect {|p| ["Account " + p.name,p.id]}, @oeaccount.id), { :prompt => t(:change_account), :class => "btn btn-small" } %></li><% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Menu
@@ -36,23 +36,23 @@
             </a>
             <ul class="dropdown-menu">
                <% if @oeuser.id == 1 and @oeuser.username == "admin" %>
-                 <li><a href="/administrator/accounts/"><span id="gethelp">Accounts</span></a></li>
-                 <li><a href="/administrator/users/"><span id="gethelp">Users</span></a></li>
+                 <li><a href="/administrator/accounts/"><span id="gethelp"><%=t :accounts %></span></a></li>
+                 <li><a href="/administrator/users/"><span id="gethelp"><%=t :users %></span></a></li>
                <% end %>
-               <li><a href="/zones/"><span id="gethelp">Zone</span></a></li>
-               <li><a href="/keypairs/"><span id="gethelp">Key Pairs</span></a></li>
-               <li><a href="/offers/"><span id="gethelp">Offers</span></a></li>
-               <li><a href="/images/"><span id="gethelp">Images</span></a></li>
-               <li><a href="/servers/"><span id="gethelp">Servers</span></a></li>
-               <li><a href="/volumes/"><span id="gethelp">Volumes</span></a></li>
+               <li><a href="/zones/"><span id="gethelp"><%=t :zones %></span></a></li>
+               <li><a href="/keypairs/"><span id="gethelp"><%=t :keyparis %></span></a></li>
+               <li><a href="/offers/"><span id="gethelp"><%=t :offers %></span></a></li>
+               <li><a href="/images/"><span id="gethelp"><%=t :images %></span></a></li>
+               <li><a href="/servers/"><span id="gethelp"><%=t :servers %></span></a></li>
+               <li><a href="/volumes/"><span id="gethelp"><%=t :volumes %></span></a></li>
                <!-- <li><a href="/ips/"><span id="gethelp">IPs</span></a></li> -->
-               <li><a href="/firewalls/"><span id="gethelp">Firewalls</span></a></li>
-               <li><a href="/rules/"><span id="gethelp">Rules</span></a></li>
-               <li><a href="/roles/"><span id="gethelp">Roles</span></a></li>
-               <li><a href="/roletasks/"><span id="gethelp">Role Task</span></a></li>
-               <li><a href="/deployments/"><span id="gethelp">Deployments</span></a></li>
-               <li><a href="/workflows/"><span id="gethelp">Workflows</span></a></li>
-               <li><a href="/infrastructures/"><span id="gethelp">Infrastructures</span></a></li>
+               <li><a href="/firewalls/"><span id="gethelp"><%=t :firewalls %></span></a></li>
+               <li><a href="/rules/"><span id="gethelp"><%=t :rules %></span></a></li>
+               <li><a href="/roles/"><span id="gethelp"><%=t :roles %></span></a></li>
+               <li><a href="/roletasks/"><span id="gethelp"><%=t :roletasks %></span></a></li>
+               <li><a href="/deployments/"><span id="gethelp"><%=t :deployments %></span></a></li>
+               <li><a href="/workflows/"><span id="gethelp"><%=t :workflows %></span></a></li>
+               <li><a href="/infrastructures/"><span id="gethelp"><%=t :infrastructures %></span></a></li>
             </ul>
           </li>
         </ul>

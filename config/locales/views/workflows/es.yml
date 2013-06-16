@@ -1,0 +1,13 @@
+es:
+  workflow: flujo
+  workflows: flujos
+  name: nombre
+  serial: numero de serie
+  properties: propiedades
+  tasks: tareas
+  deployment: distribucion
+  select_deployment: selecciona distribucion
+  roletasks: tareas
+  select_roletask: selecciona tarea a agregar
+  remove: remover
+  

@@ -1,0 +1,10 @@
+es: 
+  serial: numero de serie
+  name: nombre
+  description: descripcion
+  tasks: tareas
+  servers: servidores
+  roletask: tarea del rol
+  metadata: metadata
+  roles: roles
+  role: rol

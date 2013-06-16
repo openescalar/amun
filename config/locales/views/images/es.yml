@@ -1,0 +1,6 @@
+es: 
+  images: imagenes
+  serial: numero de serie
+  description: descripcion
+  arch: arquitectura
+  imagen: imagen

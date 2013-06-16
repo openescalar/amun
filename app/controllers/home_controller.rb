@@ -62,8 +62,9 @@ class HomeController < ApplicationController
   def signup
     if request.post?
       account = Account.find_by_name(params[:name].to_s)
-      user = User.find_by_username([:name].to_s)
-      if not account and not user
+      user = User.find_by_username(params[:name].to_s)
+      eaccount = Account.find_by_email(params[:email].to_s)
+      if not account and not user and not eaccount
         Account.create(:name => params[:name].to_s, :email => params[:email].to_s)
         flash[:notice] = 'Account created'
         redirect_to(:action => "login")

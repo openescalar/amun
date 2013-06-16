@@ -24,12 +24,12 @@
   <div class="row">
     <div class="span4 offset4 well">
 <%= form_tag do %>
-		<%= label_tag 'Username' %>
+		<%= label_tag t(:username) %>
                 <%= text_field_tag :username %>
-		<%= label_tag 'Password' %>
+		<%= label_tag t(:password) %>
                 <%= password_field_tag :password %><br>
-                <%= submit_tag "Login", :class => 'btn btn-info' %> <%= link_to 'Forgot Password', :controller => 'home', :action => 'forgotpassword' %><br>
-		<%= link_to 'Sign Up', :controller => 'home', :action => 'signup' %><br>
+                <%= submit_tag "Login", :class => 'btn btn-info' %> <%= link_to t(:forgot_password), :controller => 'home', :action => 'forgotpassword' %><br>
+		<%= link_to t(:sign_up), :controller => 'home', :action => 'signup' %><br>
 <% end %>
     </div>
   </div>
