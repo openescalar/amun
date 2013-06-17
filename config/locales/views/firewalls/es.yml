@@ -1,7 +1,0 @@
-es:
-  serial: numero de serie
-  name: nombre
-  description: descripcion
-  zone: zona
-  firewalls: cortafuegos
-  firewall: cortafuego

@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%=t :name %>:</b>
   <%= @keypair.name %>
 </p>
 
 <p>
-  <b>Public:</b>
+  <b><%=t :public %>:</b>
   <%= @keypair.public %>
 </p>
 
 <p>
-  <b>Fingerprint:</b>
+  <b><%=t :fingerprint %>:</b>
   <%= @keypair.fingerprint %>
 </p>
 
 
-<%= link_to 'Edit', edit_keypair_path(@keypair) %> |
-<%= link_to 'Back', keypairs_path %>
+<%= link_to t(:edit), edit_keypair_path(@keypair) %> |
+<%= link_to t(:back), keypairs_path %>

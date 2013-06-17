@@ -1,18 +1,18 @@
-<h1>Offer</h1>
+<h1><%=t :offer %></h1>
 
 <p>
-  <b>Code</b><br>
+  <b><%=t :code %></b><br>
   <%= @offer.code %>
 </p>
 
 <p>
-  <b>Description</b><br>
+  <b><%=t :description %></b><br>
   <%= @offer.description %>
 </p>
 
 
 <div class="form-actions">
-  <%= link_to 'Back', offers_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_offer_path(@offer), :class => 'btn' %>
-  <%= link_to 'Delete', offer_path(@offer), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), offers_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_offer_path(@offer), :class => 'btn' %>
+  <%= link_to t(:delete), offer_path(@offer), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

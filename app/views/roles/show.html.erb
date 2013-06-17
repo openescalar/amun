@@ -1,25 +1,25 @@
-<h1>Role</h1>
+<h1><%=t :role %></h1>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @role.name %>
 </p>
 
 <p>
-  <b>Description</b><br>
+  <b><%=t :description %></b><br>
   <%= @role.description %>
 </p>
 
 <p>
-  <b>Tasks</b><br>
+  <b><%=t :tasks %></b><br>
   <% @role.roletasks.each do |t| %>
-    <%= link_to "Execute", { :controller => "roles", :action => "roleexec", :id => @role.id, :roletask_id => t.id }, :confirm => "Are you sure?", :class => 'btn btn-mini btn-sucess' , :method => 'post' %> <%= link_to t.name, roletask_path(t.id) %><br>
+    <%= link_to t(:execute), { :controller => "roles", :action => "roleexec", :id => @role.id, :roletask_id => t.id }, :confirm => t(:areusure), :class => 'btn btn-mini btn-sucess' , :method => 'post' %> <%= link_to t.name, roletask_path(t.id) %><br>
   <% end %>
 </p>
 
 
 <div class="form-actions">
-  <%= link_to 'Back', roles_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_role_path(@role), :class => 'btn' %>
-  <%= link_to 'Delete', role_path(@role), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), roles_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_role_path(@role), :class => 'btn' %>
+  <%= link_to t(:delete), role_path(@role), :method => 'delete', :confirm => t(:areusue), :class => 'btn btn-danger' %>
 </div>

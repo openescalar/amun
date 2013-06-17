@@ -1,9 +1,9 @@
-<h1>Key Pairs</h1>
+<h1><%=t :keypairs %></h1>
 
 <%= render 'keypairs/mainindex' %>
 
 <br />
 
-<%= link_to 'New', new_keypair_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_keypair_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @keypairs.size, :page => @page, :objres => "keypairs" } %>
 

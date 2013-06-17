@@ -1,8 +1,8 @@
-<h1>Servers</h1>
+<h1><%=t :servers %></h1>
 
 <%= render 'servers/mainindex' %>
 
 
-<%= link_to 'New', new_server_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_server_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @servers.size, :page => @page, :objres => "servers" } %>
 

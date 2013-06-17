@@ -1,8 +1,0 @@
-es:
-  infrastructure: infraestructura
-  infrastructures: infraestructuras
-  serial: numero de serie
-  name: nombre
-  description: descripcion
-  definition: definicion
-  build: construir

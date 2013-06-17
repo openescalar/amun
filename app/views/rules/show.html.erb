@@ -1,22 +1,22 @@
-<h1>Rule</h1>
+<h1><%=t :rule %></h1>
 
 <p>
-  <b>Protocol</b><br>
+  <b><%=t :protocol %></b><br>
   <%= @rule.protocol %>
 </p>
 
 <p>
-  <b>Port</b><br>
+  <b><%=t :port %></b><br>
   <%= @rule.port %>
 </p>
 
 <p>
-  <b>Source</b><br>
+  <b><%=t :source %></b><br>
   <%= @rule.source %>
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', rules_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_rule_path(@rule), :class => 'btn' %>
-  <%= link_to 'Delete', rule_path(@rule), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), rules_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_rule_path(@rule), :class => 'btn' %>
+  <%= link_to t(:delete), rule_path(@rule), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

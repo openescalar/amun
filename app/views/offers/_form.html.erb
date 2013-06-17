@@ -3,29 +3,29 @@
     <legend><%= controller.action_name.capitalize %> Offer</legend>
 
     <div class="control-group">
-      <%= f.label :code, :class => 'control-label' %>
+      <%= f.label t(:code), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :code, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :description, :class => 'control-label' %>
+      <%= f.label t(:description), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :description, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :zone_id, :class => 'control-label' %>
+      <%= f.label :zone_id, t(:zone), :class => 'control-label' %>
       <div class="controls">
-        <%= select("offer", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+        <%= select("offer", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
       </div>
     </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', offers_path, :class => 'btn' %>
+      <%= link_to t(:cancel), offers_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

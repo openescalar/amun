@@ -1,7 +1,0 @@
-es:
-  keypairs: llaves
-  public: llave publica
-  fingerprint: huella
-  private: llave privada
-  zone: zona
-  sub_zone: subzona 

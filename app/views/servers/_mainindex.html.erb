@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Serial</b>
+        <b><%=t :serial %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>FQDN</b>
+        <b><%=t :fqdn %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>IP Address</b>
+        <b><%=t :ipaddress %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b><%=t :actions %></b>
       </div>
     </div>
     </div>
@@ -32,10 +32,10 @@
         <%= server.ip %>
       </div>
       <div class="span3 accordion-toggle">
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= server.id %>">Properties</a>
-          <%= link_to 'Install Client', :controller => "servers", :action => "iclient", :id => server.id, :class => 'btn btn-mini' %>
-          <%= link_to 'Edit', edit_server_path(server), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', server_path(server), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= server.id %>"><%=t :properties %></a>
+          <%= link_to t(:installclient), :controller => "servers", :action => "iclient", :id => server.id, :class => 'btn btn-mini' %>
+          <%= link_to t(:edit), edit_server_path(server), :class => 'btn btn-mini' %>
+          <%= link_to t(:destroy), server_path(server), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -45,22 +45,22 @@
           <div class="accordion-inner">
             <div class="row"> 
              <div class="span4">
-             <b>Zone</b> <%= server.zone.name %></br>
-             <b>Availability Zone </b><% if server.azone %><%= server.azone.name %><% end -%></br>
-             <b>Firewall</b> <%= server.firewall.serial %></br>
+             <b><%=t :zone %></b> <%= server.zone.name %></br>
+             <b><%=t :subzone %></b><% if server.azone %><%= server.azone.name %><% end -%></br>
+             <b><%=t :firewall %></b> <%= server.firewall.serial %></br>
              </div>
              <div class="span4">
-              <b>Volume</b>: 
+              <b><%=t :volumes %></b>: 
               <% server.volumes.each do |v| %>
                  <%= v.serial %> 
               <% end %>
               <br>
-              <b>Role:</b>
+              <b><%=t :roles %>:</b>
               <% server.roles.each do |r| %>
                  <%= r.name %>
               <% end %>
               <br>
-              <b>Deployment</b>: 
+              <b><%=t :deployments %></b>: 
               <% server.deployments.each do |d| %>
                  <%= d.name %>
               <% end %>

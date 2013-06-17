@@ -10,7 +10,7 @@
     </div>
 -->
     <div class="control-group">
-      <%= f.label :fqdn, :class => 'control-label' %>
+      <%= f.label t(:fqdn), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :fqdn, :class => 'text_field' %>
       </div>
@@ -40,10 +40,10 @@
 
     
     <div class="control-group">
-      <%= f.label :zone_id, :class => 'control-label' %>
+      <%= f.label t(:zone), :class => 'control-label' %>
       <div class="controls">
         <% if controller.action_name == "new" %>
-          <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+          <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
         <% else %>
           <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { }, { :disabled => true }) %>
         <% end %>  
@@ -54,14 +54,14 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :roles, :class => 'control-label' %>
+      <%= f.label t(:roles), :class => 'control-label' %>
       <div class="controls">
         <%= f.select :role_ids,  @oeaccount.roles.all.collect {|p| [p.name, p.id] }, {}, :multiple => true  %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :deployments, :class => 'control-label' %>
+      <%= f.label t(:deployments), :class => 'control-label' %>
       <div class="controls">
         <%= f.select :deployment_ids,  @oeaccount.deployments.all.collect {|p| [p.name, p.id] }, {}, :multiple => true  %>
       </div>
@@ -69,7 +69,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', servers_path, :class => 'btn' %>
+      <%= link_to t(:cancel), servers_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

@@ -1,17 +1,17 @@
-<h1>Roletask</h1>
+<h1><%=t :roletask %></h1>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @roletask.name %>
 </p>
 
 <p>
-  <b>Content</b><br>
+  <b><%=t :content %></b><br>
   <%= text_area_tag 'roletask', @roletask.content, :rows => 20, :disabled => true, :class => 'text_area span8' %>
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', roletasks_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_roletask_path(@roletask), :class => 'btn' %>
-  <%= link_to 'Delete', roletask_path(@roletask), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), roletasks_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_roletask_path(@roletask), :class => 'btn' %>
+  <%= link_to t(:delete), roletask_path(@roletask), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

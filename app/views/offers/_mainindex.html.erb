@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Code</b>
+        <b><%=t :code %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Description</b>
+        <b><%=t :description %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Zone</b>
+        <b><%=t :zone %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b><%=t :actions %></b>
       </div>
     </div>
     </div>
@@ -32,9 +32,9 @@
         <%= offer.zone.name %>
       </div>
       <div class="span3 accordion-toggle">
-        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= offer.id %>">Servers</a>
-          <%= link_to 'Edit', edit_offer_path(offer), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', offer_path(offer), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= offer.id %>"><%=t :servers %></a>
+          <%= link_to t(:edit), edit_offer_path(offer), :class => 'btn btn-mini' %>
+          <%= link_to t(:destroy), offer_path(offer), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -43,7 +43,7 @@
         <div id="collapse<%= offer.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
             <% offer.servers.each do |s| %>
-                 <b>Server</b> <%= s.serial %>
+                 <b><%=t :server %></b> <%= s.serial %>
             <% end %>
           </div>
         </div>

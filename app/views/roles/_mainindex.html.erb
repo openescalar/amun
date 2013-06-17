@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Serial</b>
+        <b><%=t :serial %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Name</b>
+        <b><%=t :name %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Description</b>
+        <b><%=t :description %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b><%=t :actions %></b>
       </div>
     </div>
     </div>
@@ -32,10 +32,10 @@
         <%= role.description %>
       </div>
       <div class="span3 accordion-toggle">
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= role.id %>">Tasks</a>
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse1<%= role.id %>">Servers</a>
-          <%= link_to 'Edit', edit_role_path(role), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', role_path(role), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= role.id %>"><%=t :tasks %></a>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse1<%= role.id %>"><%=t :servers %></a>
+          <%= link_to t(:edit), edit_role_path(role), :class => 'btn btn-mini' %>
+          <%= link_to t(:destroy), role_path(role), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -44,7 +44,7 @@
         <div id="collapse<%= role.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
             <% role.roletasks.each do |r| %>
-                 <b>Role Task</b> <%= link_to r.serial, roletask_path(r) %>
+                 <b><%=t :roletask %></b> <%= link_to r.serial, roletask_path(r) %>
             <% end %>
           </div>
         </div>
@@ -55,7 +55,7 @@
         <div id="collapse1<%= role.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
             <% role.servers.each do |a| %>
-                 <b>Serial</b> <%= link_to a.serial, server_path(a) %>
+                 <b><%=t :serial %></b> <%= link_to a.serial, server_path(a) %>
             <% end %>
           </div>
         </div>

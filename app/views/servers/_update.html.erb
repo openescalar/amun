@@ -13,73 +13,73 @@
 
   <% if @server.physical %>
   <div class="field">
-    <%= f.label :serial %><br />
+    <%= f.label t(:serial) %><br />
     <%= f.text_field :serial %>
   </div>
   <div class="field">
-    <%= f.label :fqdn %><br />
+    <%= f.label t(:fqdn) %><br />
     <%= f.text_field :fqdn %>
   </div>
   <div class="field">
-    <%= f.label :physical %><br />
+    <%= f.label t(:physical) %><br />
     <%= f.check_box :physical %>
   </div>
   <div class="field">
-    <%= f.label :ip %><br />
+    <%= f.label t(:ip) %><br />
     <%= f.text_field :ip %>
   </div>
   <div class="field">
-    <%= f.label :pip %><br />
+    <%= f.label t(:pip) %><br />
     <%= f.text_field :pip %>
   </div>
   <div class="field">
-    <%= f.label :zone %></br>
-    <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+    <%= f.label t(:zone) %></br>
+    <%= select("server", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
   </div>
   <div id="zone_select">
   </div>
   <div class="field">
-     <%= f.label :role %></br>
-     <%= select("roles", "ids", @oeaccount.roles.collect {|p| [p.name, p.id] }, { :prompt => 'Select Role' }) %>
+     <%= f.label t(:role) %></br>
+     <%= select("roles", "ids", @oeaccount.roles.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
   </div>
   <div class="field">
-     <%= f.label :deployment %></br>
-     <%= select("deployments", "ids", @oeaccount.deployments.collect {|p| [p.name, p.id] }, { :prompt => 'Select Deployment' }) %>
+     <%= f.label t(:deployment) %></br>
+     <%= select("deployments", "ids", @oeaccount.deployments.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
   </div>
   <% else %>
    <div class="field">
-    <%= f.label :serial %><br />
+    <%= f.label t(:serial) %><br />
     <%= f.text_field :serial, :disabled => true  %>
   </div>
   <div class="field">
-    <%= f.label :fqdn %><br />
+    <%= f.label t(:fqdn) %><br />
     <%= f.text_field :fqdn, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :physical %><br />
+    <%= f.label t(:physical) %><br />
     <%= f.check_box :physical, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :ip %><br />
+    <%= f.label t(:ip) %><br />
     <%= f.text_field :ip, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :pip %><br />
+    <%= f.label t(:pip) %><br />
     <%= f.text_field :pip, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :zone %></br>
+    <%= f.label t(:zone) %></br>
     <%= select("server", "zone_id", Zone.all.collect {|p| [p.name, p.id] }, { :disabled => true }, { :disabled => true } ) %>
   </div>
   <div id="zone_select">
   </div>
   <div class="field">
-     <%= f.label :role %></br>
-     <%= select("roles", "ids", Role.all.collect {|p| [p.name, p.id] }, { :prompt => 'Select Role' }) %>
+     <%= f.label t(:role) %></br>
+     <%= select("roles", "ids", Role.all.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
   </div>
   <div class="field">
-     <%= f.label :deployment %></br>
-     <%= select("deployments", "ids", Deployment.all.collect {|p| [p.name, p.id] }, { :prompt => 'Select Deployment' }) %>
+     <%= f.label t(:deployment) %></br>
+     <%= select("deployments", "ids", Deployment.all.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
   </div>
   <% end %>
   <div class="actions">

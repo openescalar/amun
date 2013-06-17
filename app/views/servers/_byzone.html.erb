@@ -3,39 +3,39 @@
   </div>
   <% else %>
   <div class="control-group">
-    <%= label :keypair, "Key Pair", :class => 'control-label' %>
+    <%= label :keypair, t(:keypair), :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "keypair_id", keypairbyzone.collect{ |p| [p.name, p.id]}, {:prompt => 'Select Keypair' }) %>
+      <%= select("server", "keypair_id", keypairbyzone.collect{ |p| [p.name, p.id]}, {:prompt => t(:select) }) %>
     </div>
   </div>
   <div class="control-group">
-    <%= label :azone, "Available Zone", :class => 'control-label' %>
+    <%= label :azone, t(:subzone), :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => 'Select Subzone' }) %>
+      <%= select("server", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => t(:select) }) %>
     </div>
   </div>
   <div class="control-group">
-    <%= label :offer, "Offer", :class => 'control-label' %>
+    <%= label :offer, t(:offer), :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "offer_id", offersbyzone.collect{ |p| [p.code + " - " + p.description , p.id] }, { :prompt => 'Select Offer' }) %>
+      <%= select("server", "offer_id", offersbyzone.collect{ |p| [p.code + " - " + p.description , p.id] }, { :prompt => t(:select) }) %>
     </div>
   </div>
   <div class="control-group">
-    <%= label :image, "Image", :class => 'control-label'  %>
+    <%= label :image, t(:image), :class => 'control-label'  %>
     <div class="controls">
-      <%= select("server", "image_id", imagesbyzone.collect{ |p| [p.serial + " - " + p.description, p.id] }, { :prompt => 'Select Image' }) %>
+      <%= select("server", "image_id", imagesbyzone.collect{ |p| [p.serial + " - " + p.description, p.id] }, { :prompt => t(:select) }) %>
     </div>
   </div>
   <div class="control-group">
-    <%= label :firewall, "Firewall", :class => 'control-label' %>
+    <%= label :firewall, t(:firewall), :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "firewall_id", firewallsbyzone.collect{ |p| [p.name, p.id] }, { :prompt => 'Select Firewall' }) %>
+      <%= select("server", "firewall_id", firewallsbyzone.collect{ |p| [p.name, p.id] }, { :prompt => t(:select) }) %>
     </div>
   </div>
   <div class="control-group">
-    <%= label :loadbalancer, "LoadBalancer", :class => 'control-label' %>
+    <%= label :loadbalancer, t(:loadbalacner), :class => 'control-label' %>
     <div class="controls">
-      <%= select("server", "loadbalancer_id", loadbalancersbyzone.collect{ |p| [p.serial, p.id] }, { :prompt => 'Select LoadBalancer' }) %>
+      <%= select("server", "loadbalancer_id", loadbalancersbyzone.collect{ |p| [p.serial, p.id] }, { :prompt => t(:select) }) %>
     </div>
   </div>
   <% end %>

@@ -12,10 +12,10 @@
   <% end %>
 
     <div class="control-group">
-      <%= f.label :zone_id, :class => 'control-label' %>
+      <%= f.label t(:zone), :class => 'control-label' %>
       <div class="controls">
         <% if controller.action_name == "new" %>
-          <%= select("keypair", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+          <%= select("keypair", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
         <% else %>
           <%= select("keypair", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { }, { :disabled => true }) %>
         <% end %>
@@ -28,19 +28,19 @@
    </div>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label t(:name) %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :public %><br />
+    <%= f.label t(:public) %><br />
     <%= f.text_field :public %>
   </div>
   <div class="field">
-    <%= f.label :private %><br />
+    <%= f.label t(:private) %><br />
     <%= f.text_field :private %>
   </div>
   <div class="field">
-    <%= f.label :fingerprint %><br />
+    <%= f.label t(:fingerprint) %><br />
     <%= f.text_field :fingerprint %>
   </div>
   <div class="actions">

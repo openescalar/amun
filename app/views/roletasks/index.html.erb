@@ -1,7 +1,7 @@
-<h1>Role Tasks</h1>
+<h1><%=t :roletasks %></h1>
 
 <%= render 'roletasks/mainindex' %>
 
-<%= link_to 'New', new_roletask_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_roletask_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @roletasks.size, :page => @page, :objres => "roletasks" } %>
 

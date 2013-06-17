@@ -3,7 +3,7 @@
     <legend><%= controller.action_name.capitalize %> Roletask</legend>
 
     <div class="control-group">
-      <%= f.label :name %>
+      <%= f.label t(:name) %>
         <%= f.text_field :name, :class => 'text_field' %>
     </div>
 
@@ -21,7 +21,7 @@
       </div> 
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionroletask" href="#collapsemetadata"><%= f.label :metadata %>
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionroletask" href="#collapsemetadata"><%= f.label t(:metadata) %>
           </a> 
         </div>
         <div id="collapsemetadata" class="accordion-body collapse in">
@@ -34,7 +34,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', roletasks_path, :class => 'btn' %>
+      <%= link_to t(:cancel), roletasks_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

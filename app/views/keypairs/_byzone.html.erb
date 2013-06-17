@@ -3,9 +3,9 @@
   </div>
   <% else %>
     <div class="control-group">
-      <%= label_tag :azone_id, 'Sub Zone', :class => 'control-label' %>
+      <%= label_tag :azone_id, t(:subzone), :class => 'control-label' %>
       <div class="controls">
-        <%= select("keypair", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => 'Select Subzone' }) %>
+        <%= select("keypair", "azone_id", azonebyzone.collect{ |p| [p.name, p.id]}, {:prompt => t(:select) }) %>
       </div>
     </div>
   <% end %>

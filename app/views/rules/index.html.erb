@@ -1,12 +1,12 @@
-<h1>Rules</h1>
+<h1><%=t :rules %></h1>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Protocol</th>
-      <th>From Port</th>
-      <th>To Port</th>
-      <th>Source</th>
-      <th>Actions</th>
+      <th><%=t :protocol %></th>
+      <th><%=t :from_port %></th>
+      <th><%=t :to_port %></th>
+      <th><%=t :source %></th>
+      <th><%=t :actions %></th>
     </tr>
   </thead>
   <tbody>
@@ -17,13 +17,13 @@
         <td><%= rule.toport %></td>
         <td><%= rule.source %></td>
         <td>
-          <%= link_to 'Destroy', rule_path(rule), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <%= link_to t(:destroy), rule_path(rule), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New', new_rule_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_rule_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @rules.size, :page => @page, :objres => "rules" } %>
 

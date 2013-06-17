@@ -29,11 +29,43 @@ es:
   rules: reglas
   roles: roles
   workflows: flujos
+  workflow: flujo
   deployments: distribuciones
   infrastructures: infraestructuras
   my_dashboard: Mi Tablero
   clouds: nubes
   billing: costos
   stats: Estatisticas
+  serial: numero de serie
+  description: descripcion
+  arch: arquictectura
+  workflow: flujo
+  workflows: flujos
+  deployments: distribuciones
+  deployment: distribucion
+  deploy: distribuir
+  zone: zona
+  subzone: sub zona
+  select: selecciona
+  role: rol
+  roles: roles
+  roletask: tarea
+  roletasks: tareas
+  execute: ejecutar
+  rule: regla
+  rule: reglas
+  protocolo: protocolo
+  from_port: puerto origen
+  to_port: puerto destino
+  source: origen
+  dest: destino
+  firewall: cortafuego
+  firewalls: cortafuegos
+  images: imagenes
+  image: imagen
+  volume: disco
+  volumenes: discos
+  size: tamano
+  
 
 

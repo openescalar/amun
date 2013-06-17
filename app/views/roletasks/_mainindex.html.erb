@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Serial</b>
+        <b><%=t :serial %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Name</b>
+        <b><%=t :name %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>uuuu</b>
+        <b><%=t :description %></b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b><%=t :actions %></b>
       </div>
     </div>
     </div>
@@ -31,9 +31,9 @@
       <div class="span2 accordion-toggle">
       </div>
       <div class="span3 accordion-toggle">
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= roletask.id %>">Roles</a>
-          <%= link_to 'Edit', edit_roletask_path(roletask), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', roletask_path(roletask), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= roletask.id %>"><%=t :roles %></a>
+          <%= link_to t(:edit), edit_roletask_path(roletask), :class => 'btn btn-mini' %>
+          <%= link_to t(:destroy), roletask_path(roletask), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -41,7 +41,7 @@
       <div class="span12">
         <div id="collapse<%= roletask.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
-                 <b>Role</b> <% if roletask.role %><%= link_to roletask.role.name, role_path(roletask.role) %><% end -%>
+                 <b><%=t :role %></b> <% if roletask.role %><%= link_to roletask.role.name, role_path(roletask.role) %><% end -%>
           </div>
         </div>
       </div>

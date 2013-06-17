@@ -4,15 +4,15 @@
     <div class="row">
       <div class="span3 well">
         <p>
-          <b>Serial</b><br>
+          <b><%=t :serial)</b><br>
           <%= @server.serial %>
         </p>
-        <span id="autorefreshgraph" class="label label-info">AutoRefresh</span>
-        <a  class="btn btn-mini btn-info" data-toggle="collapse" data-target="#properties">Properties</a>
+        <span id="autorefreshgraph" class="label label-info"><%=t :autorefresh %></span>
+        <a  class="btn btn-mini btn-info" data-toggle="collapse" data-target="#properties"><%=t :properties %></a>
         <div id="properties" class="collapse out"> 
           <br>
           <p>
-            <b>Fqdn</b><br>
+            <b><%=t :fqdn %></b><br>
             <%= @server.fqdn %>
           </p>
           <!--
@@ -22,25 +22,25 @@
             </p>
           -->
           <p>
-            <b>Ip</b><br>
+            <b><%=t :ipaddress %></b><br>
             <%= @server.ip %>
           </p>
           <p>
-            <b>Pip</b><br>
+            <b><%=t :privateipaddress %></b><br>
             <%= @server.pip %>
           </p>
         </div>
         <br>
         <p>
-        <b>Role:</b>
+        <b><%=t :role %>:</b>
         <br>
         <% @server.roles.each do |r| %>
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#rolet<%= r.name %>">Tasks</a><br>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#rolet<%= r.name %>"><%=t :tasks %></a><br>
           <%= r.name %>
           <div id="rolet<%= r.name %>" class="collapse out">
             <br>
             <% r.roletasks.each do |t| %>
-                <%= link_to "Execute", { :controller => "servers", :action => "taskexec", :id => @server.id, :role_id => r.id, :roletask_id => t.id }, :method => 'post', :confirm => "Are you sure?", :class => 'btn btn-mini btn-sucess' %> <%= t.name %> <br>
+                <%= link_to t(:execute), { :controller => "servers", :action => "taskexec", :id => @server.id, :role_id => r.id, :roletask_id => t.id }, :method => 'post', :confirm => t(:areusure), :class => 'btn btn-mini btn-sucess' %> <%= t.name %> <br>
             <% end %>
             <br>
           </div>
@@ -54,8 +54,8 @@
     </div>
     <div class="row">
       <div class="span8">
-        <span id="logautorefresh" class="label label-info" data-serial=<%= @server.serial %>>Auto Refresh Log</span>
-        <a  class="btn btn-mini btn-info" data-toggle="collapse" data-target="#logios">Show Log</a>
+        <span id="logautorefresh" class="label label-info" data-serial=<%= @server.serial %><%=t :autorefresh %></span>
+        <a  class="btn btn-mini btn-info" data-toggle="collapse" data-target="#logios"><%=t :showlog %></a>
         <div id="logios" data-serial="<%= @server.id %>" class="collapse out">
            <textarea id="logiostext" class="span10" rows="25"></textarea>
         </div>
@@ -64,7 +64,7 @@
   </div>
 </div>
 <div class="form-actions">
-  <%= link_to 'Back', servers_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_server_path(@server), :class => 'btn' %>
-  <%= link_to 'Delete', server_path(@server), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), servers_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_server_path(@server), :class => 'btn' %>
+  <%= link_to t(:delete), server_path(@server), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

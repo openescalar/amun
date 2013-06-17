@@ -1,7 +1,7 @@
-<h1>Offers</h1>
+<h1><%=t :offers %></h1>
 
 <%= render 'offers/mainindex' %>
 
-<%= link_to 'New', new_offer_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_offer_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @offers.size, :page => @page, :objres => "offers" } %>
 
