@@ -3,21 +3,21 @@
     <legend><%= controller.action_name.capitalize %> Workflow</legend>
 
     <div class="control-group">
-      <%= f.label :deployment_id, :class => 'control-label' %>
+      <%= f.label t(:deployment), :class => 'control-label' %>
       <div class="controls">
-         <%= select("workflow", "deployment_id", @oeaccount.deployments.collect {|p| [p.name, p.id] }, { :prompt => 'Select Deployment' }) %>
+         <%= select("workflow", "deployment_id", @oeaccount.deployments.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %>
+      <%= f.label t(:name), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :description, :class => 'control-label' %>
+      <%= f.label t(:description), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :description, :class => 'text_field' %>
       </div>
@@ -25,7 +25,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', workflows_path, :class => 'btn' %>
+      <%= link_to t(:cancel), workflows_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

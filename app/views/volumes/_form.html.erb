@@ -3,7 +3,7 @@
     <legend><%= controller.action_name.capitalize %> Volume</legend>
 
     <div class="control-group">
-      <%= f.label :serial, :class => 'control-label' %>
+      <%= f.label t(:serial), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :serial, :class => 'text_field', :disabled => true %>
       </div>
@@ -11,30 +11,30 @@
 
 
     <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %>
+      <%= f.label t(:name), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'text_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :description, :class => 'control-label' %>
+      <%= f.label t(:description), :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :description, :class => 'text_field' %>
       </div>
     </div>
     
     <div class="control-group">
-      <%= f.label :size, :class => 'control-label' %>
+      <%= f.label t(:size), :class => 'control-label' %>
       <div class="controls">
         <%= f.number_field :size, :class => 'number_field' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :zone_id, :class => 'control-label' %>
+      <%= f.label t(:zone), :class => 'control-label' %>
       <div class="controls">
-        <%= select("volume", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => 'Select Zone' }) %>
+        <%= select("volume", "zone_id", @oeaccount.zones.collect {|p| [p.name, p.id] }, { :prompt => t(:select) }) %>
       </div>
     </div>
 
@@ -43,7 +43,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', volumes_path, :class => 'btn' %>
+      <%= link_to t(:cancel), volumes_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

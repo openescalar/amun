@@ -1,32 +1,32 @@
-<h1>Zone</h1>
+<h1><%=t :zone %></h1>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @zone.name %>
 </p>
 
 <p>
-  <b>Description</b><br>
+  <b><%=t :description %></b><br>
   <%= @zone.description %>
 </p>
 
 <p>
-  <b>Entrypoint</b><br>
+  <b><%=t :entrypoint %></b><br>
   <%= @zone.entrypoint %>
 </p>
 
 <p>
-  <b>Apitype</b><br>
+  <b><%=t :apitype %></b><br>
   <%= @zone.apitype %>
 </p>
 
 <p>
-  <b>Username/Key</b><br>
+  <b><%=t :keyusername %></b><br>
   <%= @zone.key %>
 </p>
 
 <p>
-  <b>Tenant</b><br>
+  <b><%=t :tenant %></b><br>
   <%= @zone.tenant %>
 </p>
 <!--
@@ -38,7 +38,7 @@
 -->
 
 <div class="form-actions">
-  <%= link_to 'Back', zones_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_zone_path(@zone), :class => 'btn' %>
-  <%= link_to 'Delete', zone_path(@zone), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), zones_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_zone_path(@zone), :class => 'btn' %>
+  <%= link_to t(:delete), zone_path(@zone), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>

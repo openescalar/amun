@@ -1,7 +1,7 @@
-<h1>Workflows</h1>
+<h1><%=t :workflows %></h1>
 
 <%= render 'workflows/mainindex' %> 
 
-<%= link_to 'New', new_workflow_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_workflow_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @workflows.size, :page => @page, :objres => "workflows" } %>
 

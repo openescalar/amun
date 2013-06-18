@@ -1,4 +1,4 @@
-<h1>Zones</h1>
+<h1><%=t :zones %></h1>
 <% 
  s = "
 <option value=aws-us-east1>Amazon US East(Northern Virgina)</option>
@@ -13,12 +13,12 @@
 <option value=rs-uk>Rackspace Cloud UK</option>"
 %>
 <%= form_tag('/zones/enable/') do -%>
-    <%= select_tag "cloud", s.html_safe -%> <%= text_field_tag 'name' -%> <%= submit_tag 'Enable' -%>
+    <%= select_tag "cloud", s.html_safe -%> <%= text_field_tag 'name' -%> <%= submit_tag t(:enable) -%>
 <% end -%>
 
 
 <%= render 'zones/mainindex' %>
 
-<%= link_to 'New', new_zone_path, :class => 'btn btn-primary' %>
+<%= link_to t(:new), new_zone_path, :class => 'btn btn-primary' %>
 <%= render :partial => 'paginate', :locals => {:total => @zones.size, :page => @page, :objres => "zones" } %>
 

@@ -4,16 +4,16 @@
     <div class="row">
     <div class="accordion-heading">
       <div class="span2 accordion-toggle">
-        <b>Serial</b>
+        <b>t(:serial)</b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Status</b>
+        <b>t(:status)</b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Size</b>
+        <b>t(:size)</b>
       </div>
       <div class="span2 accordion-toggle">
-        <b>Actions</b>
+        <b>t(:actions)</b>
       </div>
     </div>
     </div>
@@ -32,8 +32,8 @@
         <%= volume.size %>
       </div>
       <div class="span3 accordion-toggle">
-          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= volume.id %>">Properties</a>
-          <%= link_to 'Destroy', volume_path(volume), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <a class="btn btn-mini btn-info" data-toggle="collapse" data-parent="#accordionp" href="#collapse<%= volume.id %>"><%=t :properties %></a>
+          <%= link_to t(:destroy), volume_path(volume), :method => :delete, :confirm => t(:areusure), :class => 'btn btn-mini btn-danger' %>
       </div>
     </div>
     </div>
@@ -41,9 +41,9 @@
       <div class="span12">
         <div id="collapse<%= volume.id %>" class="accordion-body collapse out">
           <div class="accordion-inner">
-            <b>Description</b><%= volume.description %><br>
-            <b>Device</b><%= volume.device %><br>
-            <b>Server</b><%= volume.server.serial if not volume.server.nil? %><br> 
+            <b><%=t :description %></b><%= volume.description %><br>
+            <b><%=t :device %></b><%= volume.device %><br>
+            <b><%=t :server %></b><%= volume.server.serial if not volume.server.nil? %><br> 
           </div>
         </div>
       </div>

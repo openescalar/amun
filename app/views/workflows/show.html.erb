@@ -1,22 +1,22 @@
-<h1>Workflow</h1>
+<h1><%=t :workflow %></h1>
 
 <p>
-  <b>Name</b><br>
+  <b><%=t :name %></b><br>
   <%= @workflow.name %>
 </p>
 
 <p>
-  <b>Description</b><br>
+  <b><%=t :description %></b><br>
   <%= @workflow.description %>
 </p>
 
 <p>
-  <b>Role Tasks</b><br>
+  <b><%=t :roletasks %></b><br>
     <div class="control-group">
       <div class="controls">
          <% soptions = @oeaccount.roletasks.collect {|p| [p.role.name + "::" + p.name, p.id] if p.role } 
             soptions.delete_if {|x| x == nil } %>
-         <%= select("role", "task", soptions, { :prompt => 'Select Task to Add' }) %>
+         <%= select("role", "task", soptions, { :prompt => t(:select) }) %>
          <%= hidden_field_tag 'id', @workflow.id %>
       </div>
     </div>
@@ -34,7 +34,7 @@
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', workflows_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_workflow_path(@workflow), :class => 'btn' %>
-  <%= link_to 'Delete', workflow_path(@workflow), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to t(:back), workflows_path, :class => 'btn'  %>
+  <%= link_to t(:edit), edit_workflow_path(@workflow), :class => 'btn' %>
+  <%= link_to t(:delete), workflow_path(@workflow), :method => 'delete', :confirm => t(:areusure), :class => 'btn btn-danger' %>
 </div>
