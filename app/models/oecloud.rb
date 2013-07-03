@@ -9,6 +9,7 @@ class Oecloud
 	require 'net/https'
 	require 'rexml/document'
         require 'xmlrpc/client'
+	require 'json'
 
 	def initialize(args)
 		@thezone	= args[:zone] || ""
@@ -62,6 +63,9 @@ class Oecloud
                 when "RSOPEN"
                         extend Rsosapi
                         checkToken(@thezone)
+		when "GCE"
+			extend gceapi
+			checkToken(@thezone)
 		when "CS"
 		when "COB"
 		when "OEA"
